@@ -1,39 +1,50 @@
-<img src="https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png" style="margin: 0;">
 
-Welcome USER_NAME,
+[ROADMAP](/roadmap.md)<br>
+[STATEMENT](/statement.md)<br>
+![WIREFRAME: manin pge](/static/wireframes/main-page.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project.
 
-## Gitpod Reminders
+# FEATURES
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+1. Registration and login 
+2. CRUD on different types of service offer
+3. Video with the offer presentation
+4. Testemonials' carousel
 
-`python3 -m http.server`
+# USER STORIES
 
-A blue button should appear to click: *Make Public*,
+## Main page
 
-Another blue button should appear to click: *Open Browser*.
+1. As a user I want to get to know what is the website about to define is the content relevant for me
+2. As a user I want to be able to easily navigate across the website
+3. As a regular user I want to be able to login to have access to more content content
+4. As a user I want to be able to pay for selected service
+5. As a user I want to be able to contact the owner of the website
+6. As a user I want to be able to see other customers Testemonials
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+## Registration
 
-A blue button should appear to click: *Make Public*,
+1. As a new user I want to register to discover more content
+2. As a user I want to get confirmation about being registrated
 
-Another blue button should appear to click: *Open Browser*.
+## Login 
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the backend lessons.
+1. As a user I want to be able to login to see more content
+2. As a user I want to be able to pay for the selected service
+2. As a user I want to be able to use contact form to discuss date/details
+3. As a user I want to be able to leave Testemonials
 
-## Updates Since The Instructional Video
+# TECHNOLOGIES
 
-We continually tweak and adjust this template to help give you the best experience. Here are the updates since the original video was made:
+- Fronend: 
+    - HTML
+    - CSS
+    - JS
+    - Bootstrap
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+- Backend:
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
---------
-
-Happy coding!
+    - Python
+    - Django
+    - Stripe
+    - PosteSQL (heroku)
