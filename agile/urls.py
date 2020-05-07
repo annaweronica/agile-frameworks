@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from agile_app.views import get_main_page
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', get_main_page, name='get_main_page')
 ]

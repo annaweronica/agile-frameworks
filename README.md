@@ -48,3 +48,13 @@
     - Django
     - Stripe
     - PosteSQL (heroku)
+
+
+# EXTERNAL RESOURCES USED IN THE PEOJECT
+
+- [Header](https://www.codeply.com/go/ljI9F6aRLk)
+- [Template HTML](https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_architect&stacked=h)
+
+
+# CREDITS
+- [Inspiration for the project](https://uxdesignmasterclass.com/)
