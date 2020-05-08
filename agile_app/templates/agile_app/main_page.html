@@ -1,6 +1,7 @@
-
+{% extends "base.html" %}
+{% load static %}
        
-
+    {% block content %}
         <!-- Page content -->
         <div class="w3-content w3-padding" style="max-width: 1564px;">
             <!-- About Section -->
@@ -14,7 +15,6 @@
                     enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 </p>
             </div>
-
             <!-- Project Section -->
             <div class="w3-container w3-padding-32" id="offer">
                 <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">
@@ -24,7 +24,7 @@
 
             <div class="w3-row-padding">
                 <div class="card w3-col l3 m6 w3-margin-bottom" style="width: 18rem;">
-                    <img src="../media/presentation.jpg" class="card-img-top" alt="presentation-image" />
+                    <img src="{{MEDIA_URL}}presentation.jpg" class="card-img-top" alt="presentation-image" />
                     <div class="card-body">
                         <h5 class="card-title">Presentation</h5>
                         <p class="card-text">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="card w3-col l3 m6 w3-margin-bottom" style="width: 18rem;">
-                    <img src="../media/workshop.jpg" class="card-img-top" alt="presentation-image" />
+                    <img src="{{MEDIA_URL}}workshop.jpg" class="card-img-top" alt="workshop-image" />
                     <div class="card-body">
                         <h5 class="card-title">Workshop</h5>
                         <p class="card-text">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="card w3-col l3 m6 w3-margin-bottom" style="width: 18rem;">
-                    <img src="../media/meeting.jpg" class="card-img-top" alt="presentation-image" />
+                    <img src="{{MEDIA_URL}}meeting.jpg" class="card-img-top" alt="meeting-image" />
                     <div class="card-body">
                         <h5 class="card-title">Individual offer</h5>
                         <p class="card-text">
@@ -58,4 +58,5 @@
                 </div>
             </div>
         </div>
+    {% endblock %}
    
