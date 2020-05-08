@@ -17,10 +17,9 @@
 
 1. As a user I want to get to know what is the website about to define is the content relevant for me
 2. As a user I want to be able to easily navigate across the website
-3. As a regular user I want to be able to login to have access to more content content
-4. As a user I want to be able to pay for selected service
-5. As a user I want to be able to contact the owner of the website
-6. As a user I want to be able to see other customers Testemonials
+3. As a user I want to be able to pay for selected service
+4. As a user I want to be able to contact the owner of the website
+5. As a user I want to be able to see other customers Testemonials
 
 ## Registration
 
@@ -33,6 +32,7 @@
 2. As a user I want to be able to pay for the selected service
 2. As a user I want to be able to use contact form to discuss date/details
 3. As a user I want to be able to leave Testemonials
+
 
 # TECHNOLOGIES
 
