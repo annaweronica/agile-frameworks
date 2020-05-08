@@ -21,12 +21,33 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     {% endblock %}
 
-
         <title>SCRUM</title>
     </head>
 
     <body>
+    {% block page_header %}
+    <header class="container-fluid">
+     <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                <a href="#home" class="w3-bar-item w3-button"> what is <b> SCRUM </b> about?</a>
+                <!-- Float links to the right. Hide them on small screens -->
+                <div class="w3-right w3-hide-small">
+                    <a href="#about" class="w3-bar-item w3-button">About</a>
+                    <a href="#offer" class="w3-bar-item w3-button">Offer</a>
+                    <a href="#login" class="w3-bar-item w3-button">Login</a>
+                    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block jsload %}
+    {% endblock %}
 
     </body>
     </html>
-    
