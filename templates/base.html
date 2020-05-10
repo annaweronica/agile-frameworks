@@ -7,12 +7,16 @@
     {% block meta %}
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta charset="UTF-8" />
+        <meta name="description" content="agile_frameworks">
+        <meta name="author" content="Anna_Janiak">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     {% endblock %}
 
     {% block corecss %}
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="static/css/base.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     {% endblock %}
 
     {% block corejs %}
@@ -21,26 +25,49 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     {% endblock %}
 
-        <title>SCRUM</title>
+    <title>SCRUM</title>
     </head>
 
     <body>
-    {% block page_header %}
-    <header class="container-fluid">
-     <!-- Navbar (sit on top) -->
-        <div class="w3-top">
-            <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-                <a href="#home" class="w3-bar-item w3-button"> what is <b> SCRUM </b> about?</a>
-                <!-- Float links to the right. Hide them on small screens -->
-                <div class="w3-right w3-hide-small">
-                    <a href="#about" class="w3-bar-item w3-button">About</a>
-                    <a href="#offer" class="w3-bar-item w3-button">Offer</a>
-                    <a href="#login" class="w3-bar-item w3-button">Login</a>
-                    <a href="#contact" class="w3-bar-item w3-button">Contact</a>
-                </div>
+    {% block navbar %}
+     <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">what is SCRUM about?</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_superuser %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Profile Management</a>
+                            </li>
+                            {% endif %}
+                        <li class="nav-item">
+                                <a class="nav-link" href="#">My profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Offer</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                        {% endif %}   
+                    </li>  
+                </ul>
             </div>
         </div>
-    </header>
+    </nav>
     {% endblock %}
 
     {% block content %}
