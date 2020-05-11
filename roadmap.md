@@ -30,3 +30,21 @@ d. add app product app
     - payment <br>
 
     f. allauth app (registation and login)
+
+
+1. packages app
+2. models: 
+- name(presenation, workshop, meeting), description, price
+- CRUD? for superuser?
+
+1. cart app stored in sassion with choosen date
+- without model
+
+1. checkout app
+2. model: payment
+
+1. order app (link between the product and ther user)
+- data picker (?)
+
+1. reviews app (for buyers-users)
+- form (CRUD)

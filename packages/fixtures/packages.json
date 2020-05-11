@@ -1,0 +1,41 @@
+[
+  {
+    "pk": 1,
+    "model": "packages.package",
+    "fields": {
+      "sku": "001",
+      "name": "service_1",
+      "description": "Description for service 1",
+      "price": 110.99,
+      "rating": 4.6,
+      "image_url": "/media/presentation.jpg",
+      "image": "presentation.jpg"
+    }
+  },
+  {
+    "pk": 2,
+    "model": "packages.package",
+    "fields": {
+      "sku": "002",
+      "name": "service_2",
+      "description": "Description for service 2",
+      "price": 1100.99,
+      "rating": 4.6,
+      "image_url": "/media/workshop.jpg",
+      "image": "workshop.jpg"
+    }
+  },
+  {
+    "pk": 3,
+    "model": "packages.package",
+    "fields": {
+      "sku": "003",
+      "name": "service_3",
+      "description": "Description for service 3",
+      "price": 0.0,
+      "rating": 4.6,
+      "image_url": "/media/meeting.jpg",
+      "image": "meeting.jpg"
+    }
+  }
+]
