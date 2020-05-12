@@ -48,3 +48,8 @@ d. add app product app
 
 1. reviews app (for buyers-users)
 - form (CRUD)
+
+
+-----------------------------
+
+1. add decorator on

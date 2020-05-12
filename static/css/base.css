@@ -85,3 +85,13 @@ section.pricing {
     opacity: 1;
   }
 }
+
+/* ------------------------------------  offer page */
+
+.package-offer{
+    margin-top: 4rem!important;
+}
+
+.packages-list{
+    margin-top: 5.5rem!important;
+}

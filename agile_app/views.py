@@ -5,3 +5,8 @@ from django.shortcuts import render
 def get_main_page(request):
     """ A view to return the main page """
     return render(request, 'agile_app/main_page.html')
+
+
+def get_contact_page(request):
+    """ A view to return the main page """
+    return render(request, 'agile_app/contact_page.html')

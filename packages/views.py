@@ -7,9 +7,8 @@ def get_packages(request):
 
     packages = Package.objects.all()
 
-
     context = {
         'packages': packages,
     }
-    
+
     return render(request, 'packages/packages.html', context)

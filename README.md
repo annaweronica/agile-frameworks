@@ -55,6 +55,8 @@
 - [Header](https://www.codeply.com/go/ljI9F6aRLk)
 - [Template HTML](https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_architect&stacked=h)
 - [navbar and carousel](https://startbootstrap.com/snippets/half-slider/)
+- [template for packages](https://startbootstrap.com/snippets/portfolio-item/)
+- [template for shop with reviews](https://startbootstrap.com/previews/shop-item/)
 
 
 

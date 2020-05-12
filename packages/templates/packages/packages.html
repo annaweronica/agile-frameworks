@@ -1,65 +1,60 @@
 {% extends "base.html" %}
 {% load static %}
        
-    {% block header %}
+{% block header %}
+<header>    
+</header>
+{% endblock %}
 
-    <header>
-       
-    </header>
-    {% endblock %}
+{% block offer %}
+<!-- Page Content -->
+<div class="container">
 
-    {% block offer %}
-    <!-- Page Content -->
-        <div class="container">
-
-        <!-- Portfolio Item Heading -->
-        <h1 class="my-4">Page Heading
-            <small>Secondary Text</small>
-        </h1>
-
-        <!-- Portfolio Item Row -->
-        <div class="row">
-
-            <div class="col-md-8">
-            <img class="img-fluid" src="http://placehold.it/750x500" alt="">
-            </div>
-
-            <div class="col-md-4">
-            <h3 class="my-3">Project Description</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-            <h3 class="my-3">Project Details</h3>
-            <ul>
-                <li>Lorem Ipsum</li>
-                <li>Dolor Sit Amet</li>
-                <li>Consectetur</li>
-                <li>Adipiscing Elit</li>
-            </ul>
-            </div>
-
+    <div class="row">
+        <div class=" col-lg-3 packages-list list-group">
+            <a href="#" class="list-group-item active">Presentation</a>
+            <a href="#" class="list-group-item">Workshop</a>
+            <a href="#" class="list-group-item">Individual offer</a>
         </div>
-        <!-- /.row -->
+    <!-- /.col-lg-3 -->
+   {% if packages %}
+            <div class="col-lg-9 package-offer">
+            {% for package in packages %}
+                <div class="card mt-4">
+                    <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                    <div class="card-body">
+                    <h3 class="card-title">{{package.name}}</h3>
+                    <h4> SEK {{package.price}}</h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars
+                    </div>
+                </div>
+            <!-- /.card -->
 
-        <!-- Related Projects Row -->
-        <h3 class="my-4">Related Projects</h3>
-
-        <div class="row">
-
-            <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                </a>
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">Description</div>
+                <div class="card-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    
+                <hr>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                    
+                <hr>
+                <a href="#" class="btn btn-success">Book the time</a>
+                </div>
             </div>
-
-            <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                </a>
-            </div>
-
+        <!-- /.card -->
+        {% endfor %}
         </div>
-        <!-- /.row -->
+    <!-- /.col-lg-9 -->
+    {% endif %}
+    </div>
+</div>
+<!-- /.container -->
 
-        </div>
-        <!-- /.container -->
     {% endblock %}
    
