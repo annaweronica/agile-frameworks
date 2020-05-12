@@ -3,8 +3,8 @@
     "pk": 1,
     "model": "packages.package",
     "fields": {
-      "sku": "001",
-      "name": "service_1",
+      "p_id": "001",
+      "name": "Presentation",
       "description": "Description for service 1",
       "price": 110.99,
       "rating": 4.6,
@@ -16,8 +16,8 @@
     "pk": 2,
     "model": "packages.package",
     "fields": {
-      "sku": "002",
-      "name": "service_2",
+      "p_id": "002",
+      "name": "Workshop",
       "description": "Description for service 2",
       "price": 1100.99,
       "rating": 4.6,
@@ -29,8 +29,8 @@
     "pk": 3,
     "model": "packages.package",
     "fields": {
-      "sku": "003",
-      "name": "service_3",
+      "p_id": "003",
+      "name": "Individual offer",
       "description": "Description for service 3",
       "price": 0.0,
       "rating": 4.6,
