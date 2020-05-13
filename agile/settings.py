@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'agile_app',
     'packages',
+    'bag',
     'checkout',
 ]
 

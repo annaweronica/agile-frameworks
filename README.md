@@ -65,6 +65,8 @@
 - [navbar and carousel](https://startbootstrap.com/snippets/half-slider/)
 - [template for packages](https://startbootstrap.com/snippets/portfolio-item/)
 - [template for shop with reviews](https://startbootstrap.com/previews/shop-item/)
+- [template for a checkout form](https://codepen.io/manassehl/pen/OYVeXB)
+- [template for a shopping cart/bag](https://bootstrapious.com/p/bootstrap-shopping-cart)
 
 
 
