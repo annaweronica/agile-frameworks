@@ -4,6 +4,7 @@ from django.db.models import Sum
 from django.conf import settings
 from packages.models import Package
 
+
 class Order(models.Model):
     order_number = models.CharField(max_length=32, null=False, editable=False)
     name = models.CharField(max_length=254)
