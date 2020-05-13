@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-    {% block head_title %}
-    {% endblock %}
-    </title>
-
+    <title>{% block head_title %}{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}
-    
   </head>
   <body>
     {% block body %}
@@ -36,11 +31,8 @@
         {% endif %}
       </ul>
     </div>
-    {% endblock %}
     {% block content %}
     {% endblock %}
-
-    {% block content %}
     {% endblock %}
     {% block extra_body %}
     {% endblock %}

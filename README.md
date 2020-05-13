@@ -33,6 +33,14 @@
 2. As a user I want to be able to use contact form to discuss date/details
 3. As a user I want to be able to leave Testemonials
 
+## Checkout
+
+1. As a user I want to be able to select the package.
+2. As a user I want to be able to view the selected package in the purchase summary.
+3. As a user I want to enter my payment infomation
+4. As a user I want to see the order confirmation after Checkout
+5. As a user I want to see email confirmation after checking out
+
 
 # TECHNOLOGIES
 
