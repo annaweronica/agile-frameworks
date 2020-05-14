@@ -35,4 +35,3 @@ def update_cart(request, package_id):
     }
     
     return render(request, 'checkout/checkout.html', context)
-    

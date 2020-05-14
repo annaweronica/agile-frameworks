@@ -1,0 +1,1 @@
+web: gunicorn agile.wsgi:application
