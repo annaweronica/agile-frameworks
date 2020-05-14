@@ -119,7 +119,7 @@ WSGI_APPLICATION = 'agile.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
+# a comment to try deploy to heroku as
 
 # DATABASES = {
 #    'default': {
