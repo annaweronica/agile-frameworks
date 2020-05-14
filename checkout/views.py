@@ -13,8 +13,13 @@ def checkout(request):
 
     order_form = OrderForm()
     template = 'checkout/checkout.html'
-    context = {
-        'order_form': order_form,
-    }
+    # user profile app
+   # current_user = UserProfile.objects.filter(id = request.user.id)
+    # context = {
 
-    return render(request, template, context)
+        # 'user': current_user,
+
+    # }
+
+    return render(request, template)
+    # return render(request, template, context)

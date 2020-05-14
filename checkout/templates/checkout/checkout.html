@@ -18,13 +18,14 @@
         
       </h4>
       <!--for for packages-->
+      {% for package in packages %}
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h6 class="my-0">{{packages.name}}</h6>
+            <h6 class="my-0">{{package.name}}</h6>
             
           </div>
-          <span class="text-muted">{{packages.price}} SEK</span>
+          <span class="text-muted">{{package.price}} SEK</span>
         </li>
         <!--total-->
         <li class="list-group-item d-flex justify-content-between">
@@ -32,6 +33,7 @@
           <strong>{{checkout.total}}</strong>
         </li>
       </ul>
+      {% endfor %}
 
       <!--DATE PICKER -->
         <div class="container">
@@ -56,7 +58,7 @@
         </div>
 
       <!--ADD PACKAGE BUTTON-->
-      <a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Add package</a>
+      <a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Add another package</a>
     </div>
 
     <div class="col-md-8 order-md-1">
@@ -73,13 +75,14 @@
             </div>
           </div>
         </div>
-        <!--<div class="mb-3">
-          <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com" value="{{order_form.email}}" required>
+        <!--the user can use different email then he is logged in with-->
+        <div class="mb-3">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="" value="{{order_form.email}}" required>
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
-        </div>-->
+        </div>
         <div class="mb-3">
           <label for="address">Address</label>
           <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
@@ -173,27 +176,20 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to pay</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to pay or pay?</button>
       </form>
     </div>
   </div>
 </div>
+
 {% endblock %}
 
-{% block scripts%}
-$(function () {
-
+{% block scripts %}
+<script>
     // INITIALIZE DATEPICKER PLUGIN
     $('.datepicker').datepicker({
         clearBtn: true,
         format: "dd/mm/yyyy"
     });
-
-
-    // FOR DEMO PURPOSE
-    $('#reservationDate').on('change', function () {
-        var pickedDate = $('input').val();
-        $('#pickedDate').html(pickedDate);
-    });
-});
+</script>
 {% endblock %}
