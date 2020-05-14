@@ -1,184 +1,213 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block header %}
-  <div class="container">
-  <div class="py-5 text-center">
-    <h2>Checkout form</h2>
-    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-  </div>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
 
-{% block content %}
-  <div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-    <!--YOUR CART -->
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
-        
-      </h4>
-      <!--for for packages-->
-      {% for package in packages %}
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">{{package.name}}</h6>
-            
-          </div>
-          <span class="text-muted">{{package.price}} SEK</span>
-        </li>
-      </ul>
-      
-      {% endfor %}
-        <!--total-->
-       <li class="list-group-item d-flex justify-content-between">
-          <span>Total SEK</span>
-          <strong>{{order.total}}</strong>
-        </li>
+{% block header %}
+<div class="container">
+	<div class="py-5 text-center">
+		<h2>Checkout form</h2>
+		<p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
+			has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+	</div>
+	{% endblock %}
 
-      <!--DATE PICKER -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="py-4 text-center"><i class="fa fa-calendar fa-5x"></i></div>
+	{% block content %}
+	<div class="row">
+		<div class="col-md-4 order-md-2 mb-4">
+			<!--YOUR CART -->
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Your cart</span>
 
-                    <!-- Date Picker Input -->
-                    <div class="form-group mb-4">
-                        <div class="datepicker date input-group p-0 shadow-sm">
-                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4" id="reservationDate">
-                            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
-                        </div>
-                    </div><!-- End ate Picker Input -->
+			</h4>
+			<!--for for packages-->
+			{% for package in packages %}
+			<ul class="list-group mb-3">
+				<li class="list-group-item d-flex justify-content-between lh-condensed">
+					<div>
+						<h6 class="my-0">{{package.name}}</h6>
 
-                    <div class="text-center">
-                        <p class="font-italic text-muted mb-0">Your reservation day is</p>
-                        <h4 id="pickedDate" class="font-weight-bold text-uppercase mb-3">Not set yet</h4>
-                    </div>
-                </div>
-            </div>
+					</div>
+					<span class="text-muted">{{package.price}} SEK</span>
+				</li>
+			</ul>
+
+			{% endfor %}
+			<!--total-->
+			<li class="list-group-item d-flex justify-content-between">
+				<span>Total SEK</span>
+				<strong>{{order.total}}</strong>
+			</li>
+
+			<!--DATE PICKER -->
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 mx-auto">
+						<div class="py-4 text-center"><i class="fa fa-calendar fa-5x"></i></div>
+
+						<!-- Date Picker Input -->
+						<div class="form-group mb-4">
+							<div class="datepicker date input-group p-0 shadow-sm">
+								<input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4" id="reservationDate">
+								<div class="input-group-append">
+									<span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+							</div>
+						</div><!-- End ate Picker Input -->
+
+						<div class="text-center">
+							<p class="font-italic text-muted mb-0">Your reservation day is</p>
+							<h4 id="pickedDate" class="font-weight-bold text-uppercase mb-3">Not set yet</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--ADD PACKAGE BUTTON-->
+			<a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Add another
+				package</a>
+		</div>
+
+		<div class="col-md-8 order-md-1">
+			<h4 class="mb-3">Billing address</h4>
+
+			<!-- payment form-->
+			<form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
+				{% csrf_token %}
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="fullName">Full name</label>
+						<input type="text" class="form-control" id="fullName" placeholder="" value="{{ packages.full_name}}" required>
+						<div class="invalid-feedback">
+						</div>
+					</div>
+				</div>
+				<!--the user can use different email then he is logged in with-->
+				<div class="mb-3">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" placeholder="" value="{{order_form.email}}" required>
+					<div class="invalid-feedback">
+						Please enter a valid email address for shipping updates.
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
+					<div class="invalid-feedback">
+						Please enter the address.
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+					<input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{order_form.street_address2}}">
         </div>
-
-      <!--ADD PACKAGE BUTTON-->
-      <a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Add another package</a>
-    </div>
-
-    <div class="col-md-8 order-md-1">
-      <h4 class="mb-3">Billing address</h4>
-
-      <!-- payment form-->
-      <form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
-        {% csrf_token %}
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="fullName">Full name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="{{ packages.full_name}}" required>
-            <div class="invalid-feedback">
-            </div>
-          </div>
-        </div>
-        <!--the user can use different email then he is logged in with-->
-        <div class="mb-3">
-          <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="" value="{{order_form.email}}" required>
-          <div class="invalid-feedback">
-            Please enter a valid email address for shipping updates.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
-          <div class="invalid-feedback">
-            Please enter the address.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{order_form.street_address2}}">
-        </div>
-        <div class="row">
-          <div class="col-md-5 mb-3">
-            <label for="country">Country</label>
-            <select class="custom-select d-block w-100" id="country" required>
+					<div class="row">
+						<div class="col-md-5 mb-3">
+							<label for="country">Country</label>
+							<select class="custom-select d-block w-100" id="country" required>
               <option value="">Choose...</option>
               <option>Sweden</option>
               <option>Poland</option>
             </select>
-            <div class="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="city">City</label>
-            <input type="text" class="form-control" id="city"  placeholder="" required value="{{order_form.town_or_city}}">
-            <div class="invalid-feedback">
-              City is required.
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">
+							<div class="invalid-feedback">
+								Please select a valid country.
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label for="city">City</label>
+							<input type="text" class="form-control" id="city"  placeholder="" required value="{{order_form.town_or_city}}">
+							<div class="invalid-feedback">
+								City is required.
+							</div>
+						</div>
+					</div>
+					<div class="form-check form-check-inline float-left mr-0">
+						{% if user.is_authenticated %}
+						<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+						<input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+							{% else %}
+						<label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+						{% endif %}
+					</div>
+					<hr class="mb-4">
 
-        <!--PAYMENT SECTION -->
-        <h4 class="mb-3">Payment</h4>
+					<!--PAYMENT SECTION -->
+					<h4 class="mb-3">Payment</h4>
 
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-            <label class="custom-control-label" for="credit">Credit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="debit">Debit card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-            <label class="custom-control-label" for="paypal">PayPal</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Name on card</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required>
-            <small class="text-muted">Full name as displayed on card</small>
-            <div class="invalid-feedback">
-              Name on card is required
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Credit card number</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required>
-            <div class="invalid-feedback">
-              Credit card number is required
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Expiration</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-            <div class="invalid-feedback">
-              Expiration date required
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-            <div class="invalid-feedback">
-              Security code required
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to pay or pay?</button>
-      </form>
-    </div>
-  </div>
+					<div class="d-block my-3">
+						<div class="custom-control custom-radio">
+							<input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+							<label class="custom-control-label" for="credit">Credit card</label>
+						</div>
+					
+						<div class="custom-control custom-radio">
+							<input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+							<label class="custom-control-label" for="paypal">PayPal</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-6 mb-3">
+							<label for="cc-name">Name on card</label>
+							<input type="text" class="form-control" id="cc-name" placeholder="" required>
+							<small class="text-muted">Full name as displayed on card</small>
+							<div class="invalid-feedback">
+								Name on card is required
+							</div>
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="cc-number">Credit card number</label>
+							<input type="text" class="form-control" id="cc-number" placeholder="" required>
+							<div class="invalid-feedback">
+								Credit card number is required
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 mb-3">
+							<label for="cc-expiration">Expiration</label>
+							<input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+							<div class="invalid-feedback">
+								Expiration date required
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label for="cc-cvv">CVV</label>
+							<input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+							<div class="invalid-feedback">
+								Security code required
+							</div>
+                             
+						</div>
+                        <p class="small text-danger my-0">
+						        <span class="icon">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </span>
+                                <span>Your card will be charged <strong>SEK{{total}}</strong></span>
+					        </p>
+					</div>
+					<hr class="mb-4">
+
+					<button id="submit-button" class="btn btn-primary btn-lg btn-block" type="submit">
+                        <span class="font-weight-bold">Continue to payment</span>
+                    </button>
+					
+                   
+
+			</form>
+		</div>
+	</div>
 </div>
 
 {% endblock %}
 
 {% block scripts %}
 <script>
-    // INITIALIZE DATEPICKER PLUGIN
+	// INITIALIZE DATEPICKER PLUGIN
     $('.datepicker').datepicker({
         clearBtn: true,
         format: "dd/mm/yyyy"
@@ -187,8 +216,9 @@
 {% endblock %}
 
 {% block postloadjs %}
-    {{ block.super }}
-    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ client_secret|json_script:"id_client_secret" }}
-    <script src="{% static 'checkout/js/stripe_elements.js' %}"><script>
+{{ block.super }}
+{{ stripe_public_key|json_script:"id_stripe_public_key" }}
+{{ client_secret|json_script:"id_client_secret" }}
+<script src="{% static 'checkout/js/stripe_elements.js' %}">
+	<script>
 {% endblock %}

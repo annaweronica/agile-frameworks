@@ -46,10 +46,12 @@ INSTALLED_APPS = [
     'agile_app',
     'packages',
     'checkout',
+    
+    # Other
+    'crispy_forms',
+
 ]
 
-# Other
-'crispy_forms',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
