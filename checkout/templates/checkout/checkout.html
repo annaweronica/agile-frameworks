@@ -4,7 +4,6 @@
 {% block header %}
   <div class="container">
   <div class="py-5 text-center">
-    
     <h2>Checkout form</h2>
     <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
   </div>
@@ -13,9 +12,10 @@
 {% block content %}
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
+    <!--YOUR CART -->
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">Your cart</span>
-        <span class="badge badge-secondary badge-pill">3</span>
+        
       </h4>
       <!--for for packages-->
       <ul class="list-group mb-3">
@@ -32,101 +32,97 @@
           <strong>{{checkout.total}}</strong>
         </li>
       </ul>
+
+      <!--DATE PICKER -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="py-4 text-center"><i class="fa fa-calendar fa-5x"></i></div>
+
+                    <!-- Date Picker Input -->
+                    <div class="form-group mb-4">
+                        <div class="datepicker date input-group p-0 shadow-sm">
+                            <input type="text" placeholder="Choose a reservation date" class="form-control py-4 px-4" id="reservationDate">
+                            <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-clock-o"></i></span></div>
+                        </div>
+                    </div><!-- End ate Picker Input -->
+
+                    <div class="text-center">
+                        <p class="font-italic text-muted mb-0">Your reservation day is</p>
+                        <h4 id="pickedDate" class="font-weight-bold text-uppercase mb-3">Not set yet</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      <!--ADD PACKAGE BUTTON-->
+      <a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Add package</a>
     </div>
+
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
-      <form class="needs-validation" novalidate>
+
+      <!-- payment form-->
+      <form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
+        {% csrf_token %}
         <div class="row">
           <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <label for="fullName">Full name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="{{ packages.full_name}}" required>
             <div class="invalid-feedback">
-              Valid first name is required.
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-            <div class="invalid-feedback">
-              Valid last name is required.
             </div>
           </div>
         </div>
-
-        <div class="mb-3">
-          <label for="username">Username</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text">@</span>
-            </div>
-            <input type="text" class="form-control" id="username" placeholder="Username" required>
-            <div class="invalid-feedback" style="width: 100%;">
-              Your username is required.
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-3">
+        <!--<div class="mb-3">
           <label for="email">Email <span class="text-muted">(Optional)</span></label>
-          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <input type="email" class="form-control" id="email" placeholder="you@example.com" value="{{order_form.email}}" required>
           <div class="invalid-feedback">
             Please enter a valid email address for shipping updates.
           </div>
-        </div>
-
+        </div>-->
         <div class="mb-3">
           <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+          <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
           <div class="invalid-feedback">
-            Please enter your shipping address.
+            Please enter the address.
           </div>
         </div>
-
         <div class="mb-3">
           <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{order_form.street_address2}}">
         </div>
-
         <div class="row">
           <div class="col-md-5 mb-3">
             <label for="country">Country</label>
             <select class="custom-select d-block w-100" id="country" required>
               <option value="">Choose...</option>
-              <option>United States</option>
+              <option>Sweden</option>
+              <option>Poland</option>
             </select>
             <div class="invalid-feedback">
               Please select a valid country.
             </div>
           </div>
-          <div class="col-md-4 mb-3">
-            <label for="state">State</label>
-            <select class="custom-select d-block w-100" id="state" required>
-              <option value="">Choose...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
           <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
+            <label for="city">City</label>
+            <input type="text" class="form-control" id="city"  placeholder="" required value="{{order_form.town_or_city}}">
             <div class="invalid-feedback">
-              Zip code required.
+              City is required.
             </div>
           </div>
         </div>
         <hr class="mb-4">
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+          <label class="custom-control-label" for="same-address">The order address is the same as my billing address</label>
         </div>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information for next time</label>
+          <label class="custom-control-label" for="save-info">Save this information to my profile</label>
         </div>
         <hr class="mb-4">
 
+        <!--PAYMENT SECTION -->
         <h4 class="mb-3">Payment</h4>
 
         <div class="d-block my-3">
@@ -177,9 +173,27 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to pay</button>
       </form>
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block scripts%}
+$(function () {
+
+    // INITIALIZE DATEPICKER PLUGIN
+    $('.datepicker').datepicker({
+        clearBtn: true,
+        format: "dd/mm/yyyy"
+    });
+
+
+    // FOR DEMO PURPOSE
+    $('#reservationDate').on('change', function () {
+        var pickedDate = $('input').val();
+        $('#pickedDate').html(pickedDate);
+    });
+});
 {% endblock %}

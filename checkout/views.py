@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import OrderForm
 
 
+# @login_required()
 def checkout(request):
     checkout = request.session.get('checkout', {})
     # if not checkout:
