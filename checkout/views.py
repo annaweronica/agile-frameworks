@@ -15,11 +15,15 @@ def checkout(request):
     template = 'checkout/checkout.html'
     # user profile app
    # current_user = UserProfile.objects.filter(id = request.user.id)
-    # context = {
+    context = {
 
+        'order_form': order_form,
+        'stripe_public_key': 'pk_test_OzflgG0UPSMxMSxV0zqtJwJq00A9VPyuuV',
+        'client_secret': 'test client secret',
         # 'user': current_user,
 
-    # }
+
+    }
 
     return render(request, template)
     # return render(request, template, context)

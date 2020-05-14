@@ -16,12 +16,11 @@ class Order(models.Model):
     town_or_city = models.CharField(max_length=40, null=False, blank=False)
     street_address1 = models.CharField(max_length=80, null=False, blank=False)
     street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    date = models.DateField(auto_now=False)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    total = models.DecimalField(max_digits=6, decimal_places=2)
+    date = models.DateField(auto_now=True)
+    total = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
 
     def __str__(self):
-        return self.name
+        return self.name  
 
     def _generate_order_number(self):
         """
@@ -53,9 +52,10 @@ class OrderLineItem(models.Model):
     """attaches to an order and a package"""
     # it is like an individual shopping bag item relating to a specific order
 
-    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     package = models.ForeignKey(Package, null=False, blank=False, on_delete=models.CASCADE)
-    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
         """

@@ -27,13 +27,14 @@
           </div>
           <span class="text-muted">{{package.price}} SEK</span>
         </li>
-        <!--total-->
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total SEK</span>
-          <strong>{{checkout.total}}</strong>
-        </li>
       </ul>
+      
       {% endfor %}
+        <!--total-->
+       <li class="list-group-item d-flex justify-content-between">
+          <span>Total SEK</span>
+          <strong>{{order.total}}</strong>
+        </li>
 
       <!--DATE PICKER -->
         <div class="container">
@@ -115,15 +116,6 @@
           </div>
         </div>
         <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">The order address is the same as my billing address</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Save this information to my profile</label>
-        </div>
-        <hr class="mb-4">
 
         <!--PAYMENT SECTION -->
         <h4 class="mb-3">Payment</h4>
@@ -192,4 +184,11 @@
         format: "dd/mm/yyyy"
     });
 </script>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"><script>
 {% endblock %}

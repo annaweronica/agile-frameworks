@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Package
+from checkout.models import Order
 
 
 def get_packages(request):
@@ -29,9 +30,9 @@ def update_cart(request, package_id):
         id = str(p.id)
         if id in cart and cart[id] == True:
             to_return.append(p)
-
+        
     context = {
         'packages': to_return,
     }
-    
+
     return render(request, 'checkout/checkout.html', context)
