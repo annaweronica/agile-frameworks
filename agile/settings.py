@@ -26,7 +26,7 @@ SECRET_KEY = '(z-2ec-m&*2=7c%0_d0z@j_zck@^#j37e38qj4nrl6-$h7@a#l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['agile-frameworks.herokuapp.com']
 
 
 # Application definition
