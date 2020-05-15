@@ -23,16 +23,18 @@ def update_cart(request, package_id):
     cart[package_id] = True
 
     to_return = []
-
+    total = 0
     request.session['cart'] = cart
 
     for p in Package.objects.all():
         id = str(p.id)
         if id in cart and cart[id] == True:
             to_return.append(p)
-        
+            total += p.price
+
     context = {
         'packages': to_return,
+        'total': total,
     }
 
     return render(request, 'checkout/checkout.html', context)
