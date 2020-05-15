@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'agile_app',
     'packages',
     'checkout',
-    
+    'profiles',
+
     # Other
     'crispy_forms',
 
