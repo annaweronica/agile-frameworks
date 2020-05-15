@@ -17,8 +17,8 @@ def checkout(request):
     #current_user = UserProfile.objects.filter(id = request.user.id)
     context = {
         'order_form': order_form,
- #        'stripe_public_key': 'pk_test_OzflgG0UPSMxMSxV0zqtJwJq00A9VPyuuV',
- #       'client_secret': 'test client secret',
+        'stripe_public_key': 'pk_test_OzflgG0UPSMxMSxV0zqtJwJq00A9VPyuuV',
+        'client_secret': 'test client secret',
         # 'user': current_user,
 
     }
