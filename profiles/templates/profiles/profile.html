@@ -12,10 +12,179 @@
 		<p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
 			has a validation state that can be triggered by attempting to submit the form without completing it.</p>
 	</div>
-	{% endblock %}
 </div>
+{% endblock %}
+
+
 
 {% block content %}
-<p>User name:</p>
-{{ profile }}
+
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-8 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Order History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
+                </li>
+            </ul>
+            <div class="tab-content py-4">
+                <div class="tab-pane active" id="profile">
+                    <h5 class="mb-3">Hi, {{ profile }}</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>About</h6>
+                            <p>
+                                Web Designer, UI/UX Engineer
+                            </p>
+                            <h6>Hobbies</h6>
+                            <p>
+                                Indie music, skiing and hiking. I love the great outdoors.
+                            </p>
+                        </div>
+                     
+                        <div class="col-md-12">
+                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> REVIEWS</h5>
+                            <table class="table table-sm table-hover table-striped">
+                                <tbody>                                    
+                                    <tr>
+                                        <td>
+                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/row-->
+                </div>
+                <div class="tab-pane" id="messages">
+                    <div class="alert alert-info alert-dismissable">
+                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                    </div>
+                    <table class="table table-hover table-striped">
+                        <tbody>                                    
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus. 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros. 
+                                </td>
+                            </tr>
+                        </tbody> 
+                    </table>
+                </div>
+                <div class="tab-pane" id="edit">
+                    <form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
+				{% csrf_token %}
+                {{form}}
+				<div class="row">
+					<div class="col-md-6 mb-3">
+						<label for="fullName">Full name</label>
+						<input type="text" class="form-control" id="fullName" placeholder="" value="{{ packages.full_name}}" required>
+						<div class="invalid-feedback">
+						</div>
+					</div>
+				</div>
+				<!--the user can use different email then he is logged in with-->
+				<div class="mb-3">
+					<label for="email">Email</label>
+					<input type="email" class="form-control" id="email" placeholder="" value="{{order_form.email}}" required>
+					<div class="invalid-feedback">
+						Please enter a valid email address for shipping updates.
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="address">Address</label>
+					<input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
+					<div class="invalid-feedback">
+						Please enter the address.
+					</div>
+				</div>
+				<div class="mb-3">
+					<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+					<input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{order_form.street_address2}}">
+        </div>
+					<div class="row">
+						<div class="col-md-5 mb-3">
+							<label for="country">Country</label>
+							<select class="custom-select d-block w-100" id="country" required>
+              <option value="">Choose...</option>
+              <option>Sweden</option>
+              <option>Poland</option>
+            </select>
+							<div class="invalid-feedback">
+								Please select a valid country.
+							</div>
+						</div>
+						<div class="col-md-3 mb-3">
+							<label for="city">City</label>
+							<input type="text" class="form-control" id="city"  placeholder="" required value="{{order_form.town_or_city}}">
+							<div class="invalid-feedback">
+								City is required.
+							</div>
+						</div>
+					</div>
+					<!--<div class="form-check form-check-inline float-left mr-0">
+						{% if user.is_authenticated %}
+						<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+						<input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+							{% else %}
+						<label class="form-check-label" for="id-save-info">
+                                    <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
+                                    <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
+                                </label>
+						{% endif %}
+					</div>-->
+					<hr class="mb-4">
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
 {% endblock %}
