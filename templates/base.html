@@ -51,9 +51,12 @@
                             {% if request.user.is_superuser %}
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'checkout' %}">Checkout</a>
+                                <a class="nav-link" href="{% url 'checkout' %}">Profile Management</a>
                             </li>
                             {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'checkout' %}">Checkout</a>
+                            </li>
                         <li class="nav-item">
                                 <a class="nav-link" href="{% url 'profile' %}">My profile</a>
                             </li>
@@ -94,6 +97,9 @@
     {% endblock %}
 
     {% block postloadjs %}
+    {% endblock %}
+
+    {% block extra_body %}
     {% endblock %}
 
     </body>

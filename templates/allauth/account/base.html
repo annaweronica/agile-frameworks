@@ -1,1 +1,18 @@
 {% extends "base.html" %}
+
+{% block content %}
+
+<!-- to be styled with my own style for login -->
+<div class="container header-container">
+        <div class="overlay"></div>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="allauth-form-inner-content">
+                    {% block inner_content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
