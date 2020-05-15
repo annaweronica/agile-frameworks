@@ -12,115 +12,33 @@
 		<p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group
 			has a validation state that can be triggered by attempting to submit the form without completing it.</p>
 	</div>
-</div>
-{% endblock %}
+	{% endblock %}
 
+	{% block content %}
+	<div class="row">
+			<div class="col-md-4 order-md-2 mb-4">
+			<!--YOUR RATING -->
+			<h4 class="d-flex justify-content-between align-items-center mb-3">
+				<span class="text-muted">Leaving a rating</span>
 
+			</h4>
+			<!--rating-->
+			
+			<div class="rating">
+               <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                        4.0 stars
+            </div>
 
-{% block content %}
+			<!--ADD PACKAGE BUTTON
+			<a href="{% url 'get_packages' %}" class="btn btn-primary btn-lg btn-block" type="submit">Save rating</a>-->
+		</div>
 
-<div class="container">
-    <div class="row my-2">
-        <div class="col-lg-8 order-lg-2">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Order History</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li>
-            </ul>
-            <div class="tab-content py-4">
-                <div class="tab-pane active" id="profile">
-                    <h5 class="mb-3">Hi, {{ profile }}</h5>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>About</h6>
-                            <p>
-                                Web Designer, UI/UX Engineer
-                            </p>
-                            <h6>Hobbies</h6>
-                            <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
-                            </p>
-                        </div>
-                     
-                        <div class="col-md-12">
-                            <h5 class="mt-2"><span class="fa fa-clock-o ion-clock float-right"></span> REVIEWS</h5>
-                            <table class="table table-sm table-hover table-striped">
-                                <tbody>                                    
-                                    <tr>
-                                        <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <!--/row-->
-                </div>
-                <div class="tab-pane" id="messages">
-                    <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                    </div>
-                    <table class="table table-hover table-striped">
-                        <tbody>                                    
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus. 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus. 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="float-right font-weight-bold">9/4</span> Maxamillion ais the fix for tibulum tincidunt ullamcorper eros. 
-                                </td>
-                            </tr>
-                        </tbody> 
-                    </table>
-                </div>
-                <div class="tab-pane" id="edit">
-                    <form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
+		<div class="col-md-8 order-md-1">
+			<h4 class="mb-3">Edit your personal details</h4>
+
+			<!-- payment form-->
+			<form class="needs-validation" action="{% url 'checkout' %}" method="POST" id="payment-form" novalidate>
 				{% csrf_token %}
-                {{form}}
 				<div class="row">
 					<div class="col-md-6 mb-3">
 						<label for="fullName">Full name</label>
@@ -132,21 +50,21 @@
 				<!--the user can use different email then he is logged in with-->
 				<div class="mb-3">
 					<label for="email">Email</label>
-					<input type="email" class="form-control" id="email" placeholder="" value="{{order_form.email}}" required>
+					<input type="email" class="form-control" id="email" placeholder="" value="{{profile.email}}" required>
 					<div class="invalid-feedback">
 						Please enter a valid email address for shipping updates.
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="address">Address</label>
-					<input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{order_form.street_address1}}" required>
+					<input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{profile.address}}" required>
 					<div class="invalid-feedback">
 						Please enter the address.
 					</div>
 				</div>
 				<div class="mb-3">
 					<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-					<input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{order_form.street_address2}}">
+					<input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{profile.address2}}">
         </div>
 					<div class="row">
 						<div class="col-md-5 mb-3">
@@ -162,13 +80,13 @@
 						</div>
 						<div class="col-md-3 mb-3">
 							<label for="city">City</label>
-							<input type="text" class="form-control" id="city"  placeholder="" required value="{{order_form.town_or_city}}">
+							<input type="text" class="form-control" id="city"  placeholder="" required value="{{profile.town_or_city}}">
 							<div class="invalid-feedback">
 								City is required.
 							</div>
 						</div>
 					</div>
-					<!--<div class="form-check form-check-inline float-left mr-0">
+					<div class="form-check form-check-inline float-left mr-0">
 						{% if user.is_authenticated %}
 						<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
 						<input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
@@ -178,14 +96,196 @@
                                     <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
                                 </label>
 						{% endif %}
-					</div>-->
+					</div>
 					<hr class="mb-4">
-                     </form>
-                </div>
-            </div>
-        </div>
+
+					<!--ORDER HISTORY -->
+					<h4 class="mb-3">Order history</h4>
+
+					
+
+					<div class="row">
+						<hr>
+<div class="container bootstrap snippet">
+  
+    <div class="row">
        
+        <!--/col-3-->
+        <div class="col-sm-12">
+
+            
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="home">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Order number</th>
+                                    <th>Order date</th>
+                                    <th>Package name</th>
+                                    <th>Status</th>
+                                    <th>Total </th>
+                                </tr>
+                            </thead>
+                            <tbody id="items">
+                                <tr>
+                                    <td>1</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                    <td>Table cell</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr>
+                    </div>
+                    <!--/table-resp-->
+
+                    <hr>
+
+                </div>
+                <!--/tab-pane-->
+                <div class="tab-pane" id="messages">
+
+                    <h2></h2>
+
+                    <ul class="list-group">
+                        <li class="list-group-item text-muted">Inbox</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Here is your a link to the latest summary report from the..</a> 2.13.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Hi Joe, There has been a request on your account since that was..</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Nullam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Thllam sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Wesm sapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">For therepien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Also we, havesapien massaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+                        <li class="list-group-item text-right"><a href="#" class="pull-left">Swedish chef is assaortor. A lobortis vitae, condimentum justo...</a> 2.11.2014</li>
+
+                    </ul>
+
+                </div>
+                <!--/tab-pane-->
+                <div class="tab-pane" id="settings">
+
+                    <hr>
+                    <form class="form" action="##" method="post" id="registrationForm">
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="first_name">
+                                    <h4>First name</h4></label>
+                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="last_name">
+                                    <h4>Last name</h4></label>
+                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="phone">
+                                    <h4>Phone</h4></label>
+                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="mobile">
+                                    <h4>Mobile</h4></label>
+                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="email">
+                                    <h4>Email</h4></label>
+                                <input type="email" class="form-control" name="email" id="profile-email" placeholder="you@email.com" title="enter your email.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="email">
+                                    <h4>Location</h4></label>
+                                <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="password">
+                                    <h4>Password</h4></label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-xs-6">
+                                <label for="password2">
+                                    <h4>Verify</h4></label>
+                                <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+            <!--/tab-pane-->
+        </div>
+        <!--/tab-content-->
+
     </div>
+    <!--/col-9-->
 </div>
+<!--/row-->
+					</div>
+					<div class="row">
+						
+					</div>
+					<hr class="mb-4">
+
+					<button id="submit-button" class="btn btn-primary btn-lg btn-block" type="submit">
+                        <span class="font-weight-bold">Save</span>
+                    </button>
+					
+                   
+
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
 
 {% endblock %}

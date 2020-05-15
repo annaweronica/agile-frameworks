@@ -69,7 +69,6 @@
 - [template for shop with reviews](https://startbootstrap.com/previews/shop-item/)
 - [template for a checkout form](https://codepen.io/manassehl/pen/OYVeXB)
 - [template for a shopping cart/bag](https://bootstrapious.com/p/bootstrap-shopping-cart)
-- [profile user template](https://www.codeply.com/go/5Lu0E8graQ/bootstrap-4-user-profile-template)
 - [template for a review](https://www.bootdey.com/snippets/view/bs4-Ratings-and-Reviews-page#html)
 
 
