@@ -101,13 +101,13 @@
 					</div>
 					<div class="form-check form-check-inline float-left mr-0">
 						{% if user.is_authenticated %}
-						<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-						<input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
-							{% else %}
-						<label class="form-check-label" for="id-save-info">
+						    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
+						    <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked>
+						{% else %}
+						    <label class="form-check-label" for="id-save-info">
                                     <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or 
                                     <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                                </label>
+                            </label>
 						{% endif %}
 					</div>
 					<hr class="mb-4">
@@ -126,8 +126,18 @@
 							<label class="custom-control-label" for="paypal">PayPal</label>
 						</div>
 					</div>
-
-					<div class="row">
+                    
+                    <fieldset class="px-3">
+                        <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
+                        <!-- A Stripe card element will go here -->
+                        <div class="mb-3" id="card-element"></div>
+                        <!-- Used to display form errors -->
+                        <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                        <!-- Pass the client secret to the view so we can get the payment intent id -->
+                        <input type="hidden" value="{{ client_secret }}" name="client_secret">
+                    </fieldset>
+					
+                    <div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="cc-name">Name on card</label>
 							<input type="text" class="form-control" id="cc-name" placeholder="" required>
@@ -164,7 +174,7 @@
 						        <span class="icon">
                                     <i class="fas fa-exclamation-circle"></i>
                                 </span>
-                                <span>Your card will be charged <strong>SEK{{total}}</strong></span>
+                                <span>Your card will be charged <strong>SEK {{total}}</strong></span>
 					        </p>
 					</div>
 					<hr class="mb-4">
@@ -193,8 +203,8 @@
 {% endblock %}
 
 {% block postloadjs %}
-{{ block.super }}
-{{ stripe_public_key|json_script:"id_stripe_public_key" }}
-{{ client_secret|json_script:"id_client_secret" }}
-<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}
