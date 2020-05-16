@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-
+from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -9,28 +9,41 @@ from packages.models import Package
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 
+import stripe
+
 
 def checkout(request):
+    stripe_public_key = settings.STRIPE_PUBLIC_KEY
+    stripe_secret_key = settings.STRIPE_SECRET_KEY
 
     order_form = OrderForm()
     cart = request.session.get('cart', {})
     # package = Package.objects.get(id  = package_id)
 
     to_return = []
-    total = 0
+    total = 3
 
     for p in Package.objects.all():
         id = str(p.id)
         if id in cart and cart[id] == True:
             to_return.append(p)
             total += p.price
+    stripe_total = round(total * 100)
+    stripe.api_key = stripe_secret_key
+    intent = stripe.PaymentIntent.create(
+        amount=stripe_total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    if not stripe_public_key:
+        messages.warning(request, 'Stripe public key is missing.')
 
     context = {
         'packages': to_return,
         'total': total,
         'order_form': order_form,
-        'stripe_public_key': 'pk_test_OzflgG0UPSMxMSxV0zqtJwJq00A9VPyuuV',
-        'client_secret': 'test client secret',
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret,
     }
 
     return render(request, 'checkout/checkout.html', context)
