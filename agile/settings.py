@@ -27,7 +27,7 @@ SECRET_KEY = '(z-2ec-m&*2=7c%0_d0z@j_zck@^#j37e38qj4nrl6-$h7@a#l'
 DEBUG = True
 
 ALLOWED_HOSTS = ['agile-frameworks.herokuapp.com']
-ALLOWED_HOSTS = ['localhost']
+#ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
     # Other
     'crispy_forms',
+    'storages',
 
 ]
 
@@ -117,14 +118,14 @@ LOGIN_REDIRECT_URL = '/checkout'
 WSGI_APPLICATION = 'agile.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+#Database
+#https://docs.djangoproject.com/en/3.0/ref/settings/ # databases
 
 # DATABASES = {
 #    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 # }
 
-#DATABASES = {
+# DATABASES = {
 #       'default': {
 #       'ENGINE': 'django.db.backends.sqlite3',
 #       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
