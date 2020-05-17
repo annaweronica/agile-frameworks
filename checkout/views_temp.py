@@ -5,10 +5,7 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-
 from packages.models import Package
-from packages.views import get_packages
-
 from profiles.forms import UserProfileForm
 from profiles.models import UserProfile
 
@@ -19,36 +16,6 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
-    if request.method == 'POST':
-        form_data = {
-            'full_name': request.POST['full_name'],
-            'email': request.POST['email'],
-            'address': request.POST['address'],
-            'address2': request.POST['address2'],
-            'country': request.POST['country'],
-            'city': request.POST['city'],
-        }
-        print(form_data)
-        order_form = OrderForm(form_data)
-
-        print(order_form.is_valid())
-
-        if order_form.is_valid():
-            order = order_form.save()
-            for p in OrderLineItem.packages:
-                package = get_packages.objects.get(id=package.id)
-                order_line_item = OrderLineItem(
-                    order=order,
-                    package=package,
-                    quantity=OrderLineItem.quantity,
-                )
-                order_line_item.save()
-            request.session['save_iquantitynfo'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
-        else:
-            messages.error(request, 'There was an error with your form. \
-                Please double check your information.')
-
     order_form = OrderForm()
     cart = request.session.get('cart', {})
     # package = Package.objects.get(id  = package_id)
@@ -58,7 +25,7 @@ def checkout(request):
 
     for p in Package.objects.all():
         id = str(p.id)
-        if id in cart and cart[id] is True:
+        if id in cart and cart[id] == True:
             to_return.append(p)
             total += p.price
     stripe_total = round(total * 100)
@@ -72,7 +39,7 @@ def checkout(request):
         messages.warning(request, 'Stripe public key is missing.')
 
     context = {
-       'packages': to_return,
+        'packages': to_return,
         'total': total,
         'order_form': order_form,
         'stripe_public_key': stripe_public_key,

@@ -44,33 +44,33 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="fullName">Full name</label>
-                        <input type="text" class="form-control" id="fullName" placeholder="" value="{{ packages.full_name}}" required />
+                        <input type="text" class="form-control" id="fullName" placeholder="" value="{{ packages.full_name}}" name="full_name" required />
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
                 <!--the user can use different email then he is logged in with-->
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="" value="{{profile.email}}" required />
+                    <input type="email" class="form-control" id="email" placeholder="" value="{{profile.email}}" name="email" required />
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{profile.address}}" required />
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{profile.address}}" name="address" required />
                     <div class="invalid-feedback">
                         Please enter the address.
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{profile.address2}}" />
+                    <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{profile.address2}}" name="address2" />
                 </div>
                 <div class="row">
                     <div class="col-md-5 mb-3">
                         <label for="country">Country</label>
-                        <select class="custom-select d-block w-100" id="country" required>
+                        <select class="custom-select d-block w-100" id="country" name="country" required>
                             <option value="">Choose...</option>
                             <option>Sweden</option>
                             <option>Poland</option>
@@ -81,7 +81,7 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="" required value="{{profile.town_or_city}}" />
+                        <input type="text" class="form-control" id="city" placeholder="" name="city" required value="{{profile.town_or_city}}" />
                         <div class="invalid-feedback">
                             City is required.
                         </div>
@@ -100,8 +100,7 @@
                 <hr class="mb-4" />
 
                 <!--PAYMENT SECTION -->
-                <div class="d-block my-3"></div>
-
+                
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
                     <!-- A Stripe card element will go here -->
@@ -130,14 +129,21 @@
     </div>
 </div>
 
-{% endblock %} {% block scripts %}
-<script>
-    // INITIALIZE DATEPICKER PLUGIN
-    $(".datepicker").datepicker({
-        clearBtn: true,
-        format: "dd/mm/yyyy",
-    });
-</script>
-{% endblock %} {% block postloadjs %} {{ block.super }} {{ stripe_public_key|json_script:"id_stripe_public_key" }} {{ client_secret|json_script:"id_client_secret" }}
-<script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // INITIALIZE DATEPICKER PLUGIN
+        $(".datepicker").datepicker({
+            clearBtn: true,
+            format: "dd/mm/yyyy",
+        });
+    </script>
+{% endblock %}
+
+{% block postloadjs %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 {% endblock %}

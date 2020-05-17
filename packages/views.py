@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from .models import Package
 from checkout.models import Order
 
@@ -28,7 +28,7 @@ def update_cart(request, package_id):
 
     for p in Package.objects.all():
         id = str(p.id)
-        if id in cart and cart[id] == True:
+        if id in cart and cart[id] is True:
             to_return.append(p)
             total += p.price
 
@@ -37,4 +37,4 @@ def update_cart(request, package_id):
         'total': total,
     }
 
-    return render(request, 'checkout/checkout.html', context)
+    return redirect(reverse('checkout'))
