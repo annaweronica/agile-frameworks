@@ -23,15 +23,20 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
-            'address': request.POST['address'],
-            'address2': request.POST['address2'],
+            'street_address1': request.POST['address'],
+            'street_address2': request.POST['address2'],
+            'town_or_city': request.POST['city'],
             'country': request.POST['country'],
-            'city': request.POST['city'],
+
         }
-        print(form_data)
+
+        print(form_data)  # Test print
+
         order_form = OrderForm(form_data)
 
-        print(order_form.is_valid())
+        print(order_form.is_valid())  # test print
+
+        print('Generated order number:', Order.order_number)  # Test print
 
         if order_form.is_valid():
             order = order_form.save()
@@ -43,8 +48,9 @@ def checkout(request):
                     quantity=OrderLineItem.quantity,
                 )
                 order_line_item.save()
+
             request.session['save_iquantitynfo'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            return redirect(reverse('checkout_success', args=[Order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -80,6 +86,7 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+    #return redirect(reverse('checkout_success', args=[order_number]))
 
 
 def checkout_success(request, order_number):
