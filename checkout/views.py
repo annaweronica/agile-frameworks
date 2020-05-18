@@ -62,7 +62,7 @@ def checkout(request):
         if id in cart and cart[id] is True:
             to_return.append(p)
             total += p.price
-    
+
     stripe_total = round(total * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(

@@ -22,9 +22,6 @@ def update_cart(request, package_id):
     cart = request.session.get('cart', {})
     # package = Package.objects.get(id  = package_id)
     cart[package_id] = True
-
-    print(cart)
-
     to_return = []
     total = 0
     request.session['cart'] = cart
