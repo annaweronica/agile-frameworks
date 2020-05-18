@@ -58,9 +58,11 @@ def checkout(request):
 
     for p in Package.objects.all():
         id = str(p.id)
+        print(id)
         if id in cart and cart[id] is True:
             to_return.append(p)
             total += p.price
+    
     stripe_total = round(total * 100)
     stripe.api_key = stripe_secret_key
     intent = stripe.PaymentIntent.create(
@@ -80,7 +82,7 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
-    #return redirect(reverse('checkout_success', args=[order_number]))
+    # return redirect(reverse('checkout_success', args=[order_number]))
 
 
 def checkout_success(request, order_number):

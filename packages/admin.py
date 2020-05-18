@@ -6,14 +6,16 @@ from .models import Package
 
 class PackageAdmin(admin.ModelAdmin):
     list_display = (
-        # 'p_id',
+    #     # 'p_id',
         'name',
+        'description',
         'price',
         'rating',
-        'image',
+        'image_url',
+        #'image',
     )
 
-    # ordering = ('p_id',)
+    ordering = ('name',)
 
 
 admin.site.register(Package, PackageAdmin)

@@ -49,8 +49,10 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
                         {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <p class="nav-link" id="logged_in_user"> Hi, {{ request.user.username }}</p>
+                            </li>
                             {% if request.user.is_superuser %}
-                            
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'get_package_management' %}">Package Management</a>
                             </li>

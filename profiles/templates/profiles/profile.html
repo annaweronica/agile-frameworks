@@ -52,8 +52,8 @@
 								</a>
 							</td>
 							<td>{{ order.date }}</td>
-							<td>{{ order.package }}</td>
-							<td>${{ order.lineitem_total }}</td>
+							<td>{{ Order.package }}</td>
+							<td>SEK {{ order.total }}</td>
 						</tr>
 						{% endfor %}
 					</tbody>
@@ -66,5 +66,5 @@
 
 	{% block postloadjs %}
 	{{ block.super }}
-	<script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script>
+	<!-- <script type="text/javascript" src="{% static 'profiles/js/countryfield.js' %}"></script> -->
 	{% endblock %}
