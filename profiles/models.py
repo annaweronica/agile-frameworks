@@ -20,7 +20,7 @@ class UserProfile(models.Model):
                                             null=True, blank=True)
     default_street_address2 = models.CharField(max_length=80,
                                             null=True, blank=True)
-    default_country = CountryField(max_length=40, null=False, blank=True)
+    default_country = CountryField(max_length=40, null=True, blank=True)
 
     def __str__(self):
         return self.user.username
