@@ -7,14 +7,14 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('full_name', 'email',
                   'street_address1', 'street_address2',
-                  'town_or_city', 'country')
+                  'town_or_city')
 
-    def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
-        super().__init__(*args, **kwargs)
+    #def __init__(self, *args, **kwargs):
+    #    """
+    #   Add placeholders and classes, remove auto-generated
+    #   labels and set autofocus on first field
+    #   """
+    #    super().__init__(*args, **kwargs)
         # placeholders = {
         #     'full_name': 'Full Name',
         #     'email': 'Email Address',
@@ -24,7 +24,7 @@ class OrderForm(forms.ModelForm):
         #     'country': 'Country',
         # }
 
-        self.fields['full_name'].widget.attrs['autofocus'] = True
+     #   self.fields['full_name'].widget.attrs['autofocus'] = True
         # for field in self.fields:
         #     if field != 'country':
         #         if self.fields[field].required:

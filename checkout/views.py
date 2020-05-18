@@ -18,7 +18,7 @@ import stripe
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
-
+    cart = request.session.get('cart', {})
     if request.method == 'POST':
         form_data = {
             'full_name': request.POST['full_name'],
@@ -26,37 +26,31 @@ def checkout(request):
             'street_address1': request.POST['address'],
             'street_address2': request.POST['address2'],
             'town_or_city': request.POST['city'],
-            'country': request.POST['country'],
+            # 'country': request.POST['country'],
 
         }
 
-        print(form_data)  # Test print
-
         order_form = OrderForm(form_data)
-
-        print(order_form.is_valid())  # test print
-
-        print('Generated order number:', Order.order_number)  # Test print
 
         if order_form.is_valid():
             order = order_form.save()
-            for p in OrderLineItem.packages:
-                package = get_packages.objects.get(id=package.id)
+            for package_id, selected in cart.items():
+                package = Package.objects.get(id=package_id)
                 order_line_item = OrderLineItem(
                     order=order,
                     package=package,
-                    quantity=OrderLineItem.quantity,
                 )
                 order_line_item.save()
 
             request.session['save_iquantitynfo'] = 'save-info' in request.POST
-            return redirect(reverse('checkout_success', args=[Order.order_number]))
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
 
     order_form = OrderForm()
-    cart = request.session.get('cart', {})
+
     # package = Package.objects.get(id  = package_id)
 
     to_return = []
@@ -110,7 +104,7 @@ def checkout_success(request, order_number):
             'default_town_or_city': order.town_or_city,
             'default_street_address1': order.street_address1,
             'default_street_address2': order.street_address2,
-            'default_country': order.country,
+            # 'default_country': order.country,
         }
         user_profile_form = UserProfileForm(profile_data,
                                             instance=profile)

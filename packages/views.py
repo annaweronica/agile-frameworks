@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse
 from .models import Package
 from checkout.models import Order
+from django.contrib.auth.decorators import login_required
 
 
 def get_packages(request):
@@ -14,13 +15,15 @@ def get_packages(request):
 
     return render(request, 'packages/packages.html', context)
 
-
+@login_required
 def update_cart(request, package_id):
     """ A view to see updated cart """
 
     cart = request.session.get('cart', {})
     # package = Package.objects.get(id  = package_id)
     cart[package_id] = True
+
+    print(cart)
 
     to_return = []
     total = 0

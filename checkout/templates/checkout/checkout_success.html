@@ -82,7 +82,7 @@
                             <p class="mb-0 text-black font-weight-bold">Address 2</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="mb-0">{{ order.street_address1 }}</p>
+                            <p class="mb-0">{{ order.street_address2 }}</p>
                         </div>
                     </div>
                     {% endif %}
@@ -96,23 +96,23 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">Country</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
                             <p class="mb-0">{{ order.country }}</p>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <div class="row">
+                   <!-- <div class="row">
                         <div class="col-12 col-md-4">
                             <p class="mb-0 text-black font-weight-bold">Phone Number</p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
                             <p class="mb-0">{{ order.phone_number }}</p>
                         </div>
-                    </div>
+                    </div>-->
 
                     <div class="row">
                         <div class="col">
@@ -149,7 +149,7 @@
                         <span class="text-uppercase">Back to Profile</span>
                     </a>
                 {% else %}
-                    <a href="{% url 'packages' %}" class="btn btn-black rounded-0 my-2">
+                    <a href="{% url 'get_packages' %}" class="btn btn-black rounded-0 my-2">
                         <span class="icon mr-2">
                             <i class="fas fa-gifts"></i>
                         </span>

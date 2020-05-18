@@ -1,9 +1,9 @@
 from django.test import TestCase
-from .models import Packages
+from .models import Package
 
 
 class TestModels(TestCase):
 
     def test_package(self):
-        packages = Packages.objects.create(name='Test Package')
-        self.assertFalse(packages.done)
+        package = Package.objects.create(name='Test Package')
+        self.assertEqual(str(package), 'Test Package')
