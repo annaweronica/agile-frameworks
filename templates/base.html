@@ -54,7 +54,7 @@
                             </li>
                             {% if request.user.is_superuser %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'get_package_management' %}">Package Management</a>
+                                <a class="nav-link" href="{% url 'add_package' %}">Package Management</a>
                             </li>
                             {% endif %}
                             <li class="nav-item">
@@ -78,9 +78,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'get_contact_page' %}">Contact</a>
                             </li>
-                        {% endif %}   
-                    </li> 
-                     
+                            </li>
+                        {% endif %}                    
                 </ul>
             </div>
         </div>

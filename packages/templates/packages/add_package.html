@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+       
+{% block header %}
+<header>    
+</header>
+{% endblock %}
+
+{% block offer %}
+<!-- Page Content -->
+
+<div class="container-fluid">
+    <div class="row">
+            <div class=" col-lg-3 packages-list list-group">
+                <a href="" class="list-group-item active">The package on the side list</a>
+            </div>
+    <div class="col-lg-9 package-offer package-offer-form">
+        <form method="POST" action="{% url 'add_package' %}" class="form mb-2" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form }}
+            <div class="text-right">
+                <a class="btn btn-outline-black rounded-0" href="{% url 'get_packages' %}">Cancel</a>
+                    <button class="btn btn-black rounded-0" type="submit">Add Product</button>
+            </div>
+        </form>
+
+    </div>
+    </div>
+</div>
+
+<!-- /.container -->
+{% endblock %}
