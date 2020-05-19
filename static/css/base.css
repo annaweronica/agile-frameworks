@@ -1,6 +1,6 @@
-div{
+/* div{
     border: black solid 1px;
-}
+} */
 
 html{
     height: 100%;
@@ -12,7 +12,11 @@ body{
     height: calc(100vh - 164px);
     color: #343A40;
     font-family: 'Catamaran';
+    margin-top: 3.5rem;
 }
+
+/* ------------------------------------  main_page carousel */
+
 
 /* ------------------------------------  main_page carousel */
 .carousel-item {

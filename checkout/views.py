@@ -58,7 +58,6 @@ def checkout(request):
 
     for p in Package.objects.all():
         id = str(p.id)
-        print(id)
         if id in cart and cart[id] is True:
             to_return.append(p)
             total += p.price

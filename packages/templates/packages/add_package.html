@@ -9,15 +9,26 @@
 {% block offer %}
 <!-- Page Content -->
 
-<div class="container-fluid">
-    <div class="row">
-            <div class=" col-lg-3 packages-list list-group">
+<div class="container">
+     <div class="row">
+           <!-- <div class=" col-lg-3 packages-list list-group">
                 <a href="" class="list-group-item active">The package on the side list</a>
-            </div>
+            </div>-->
     <div class="col-lg-9 package-offer package-offer-form">
         <form method="POST" action="{% url 'add_package' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form }}
+                     <!--form.as_p or as_table-->
+                    {% for field in form %}
+                        <div class="fieldWrapper">
+                            {{ field.errors }}
+                            {{ field.label_tag }} 
+                            <div>{{ field }}</div>
+                            <br>
+                            {% if field.help_text %}
+                                <p class="help">{{ field.help_text|safe }}</p>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
             <div class="text-right">
                 <a class="btn btn-outline-black rounded-0" href="{% url 'get_packages' %}">Cancel</a>
                     <button class="btn btn-black rounded-0" type="submit">Add Product</button>

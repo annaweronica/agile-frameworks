@@ -57,7 +57,7 @@ def add_package(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully added package')
-            return redirect(reverse('add_package'))
+            return redirect(reverse('get_packages'))
         else:
             messages.error(request,
                            'Failed to add a package. Please ensure the form is correct')
@@ -79,11 +79,13 @@ def edit_package(request, package_id):
     if request.method == 'POST':
         form = PackageForm(request.POST, request.FILES, instance=package)
         if form.is_valid():
-            form.save()
+            package = form.save()
             messages.success(request, 'The package successfully updated!')
-            return redirect(reverse('package_id', args=[product.id])) # it was product_detail 
+            return redirect(reverse('get_packages',
+                            args=[package.name]))  # it was product_detail
         else:
-            messages.error(request, 'Failed to update a package. Please ensure the form is valid.')
+            messages.error(request,
+                           'Failed to update a package. Please ensure the form is valid.')
     else:
         form = PackageForm(instance=package)
         messages.info(request, f'You are editing {package.name}')
@@ -95,3 +97,11 @@ def edit_package(request, package_id):
     }
 
     return render(request, template, context)
+
+
+def delete_package(request, package_id):
+    """ Delete a package from the offer """
+    package = get_object_or_404(Package, pk=package_id)
+    package.delete()
+    messages.success(request, 'Package deleted!')
+    return redirect(reverse('get_packages'))

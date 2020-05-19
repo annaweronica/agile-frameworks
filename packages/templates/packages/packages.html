@@ -11,21 +11,21 @@
 <div class="container">
 
     <div class="row">
-        <div class=" col-lg-3 packages-list list-group">
+        <!--<div class=" col-lg-3 packages-list list-group">
             <a href="#Presentation" class="list-group-item active">Presentation</a>
             <a href="#Workshop" class="list-group-item">Workshop</a>
             <a href="#Individual offer" class="list-group-item">Individual offer</a>
-        </div>
+        </div>-->
     <!-- /.col-lg-3 -->
    {% if packages %}
-            <div class="col-lg-9 package-offer">
+            <div class="col-lg-12 package-offer">
             {% for package in packages %}
                 <div class="card mt-4" id="{{package.name}}">
                     <img class="card-img-top img-fluid" src="{{ package.image.url }}" alt="">
                     <div class="card-body">
                     <h3 class="card-title">{{package.name}}</h3>
                     <h4> SEK {{package.price}}</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+                    <p class="card-text">123quam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
                     <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
                         4.0 stars
                     </div>
@@ -35,7 +35,7 @@
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">Description</div>
                 <div class="card-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+                <p>{{ package.description }}</p>
                     
                 <hr>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
@@ -46,8 +46,37 @@
                 <hr>
                 <!-- if the user if logged in bla bla -->
                
-                    <a href="{% url 'update_cart' package.id %}" class="btn btn-success">Book and buy</a>            
+                    <a href="{% url 'update_cart' package.id %}" class="btn btn-success">Book and buy</a>  
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_package' package.id %}">Edit</a> | 
+                        </small>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
+                                Delete
+                            </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Package will be <strong>DELETED.</strong></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <a class="text-danger" href="{% url 'delete_package' package.id %}">Delete</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                     {% endif %} 
                 </div>
+                
             </div>
         <!-- /.card -->
         {% endfor %}

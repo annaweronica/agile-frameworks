@@ -7,4 +7,5 @@ urlpatterns = [
     path('package_management/', views.get_package_management, name='get_package_management'),
     path('add/', views.add_package, name='add_package'),
     path('edit/<package_id>/', views.edit_package, name='edit_package'),
+    path('delete/<package_id>/', views.delete_package, name='delete_package'),
 ]
