@@ -46,16 +46,16 @@
                 <hr>
                 <!-- if the user if logged in bla bla -->
                
-                    <a href="{% url 'update_cart' package.id %}" class="btn btn-success">Book and buy</a>  
+                    <a href="{% url 'update_cart' package.id %}" class="btn btn-outline-dark">Book and buy</a>  
                     {% if request.user.is_superuser %}
                         <small class="ml-3">
                             <a href="{% url 'edit_package' package.id %}">Edit</a> | 
                         </small>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">
-                                Delete
-                            </button>
+                        <button type="button" id="delete-button" class="btn btn-outline-primary" data-toggle="modal" data-target="#deleteModal-{{ package.id }}" data-package="{{ package.id }}">
+                                Delete  
+                        </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="deleteModal-{{ package.id }}"  tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -88,3 +88,4 @@
 <!-- /.container -->
 
 {% endblock %}
+

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from agile_app.views import get_main_page
+# from agile_app.views import get_main_page
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -26,4 +26,5 @@ urlpatterns = [
     path('packages/', include('packages.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
+    path('contact/', include('contactform.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

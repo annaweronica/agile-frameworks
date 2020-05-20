@@ -50,8 +50,14 @@ def get_package_management(request):
     return render(request, 'packages/package_management.html')
 
 
+@login_required
 def add_package(request):
     """ Add a package to the offer """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the owner can do that')
+        return redirect(reverse('agile_app'))
+
     if request.method == 'POST':
         form = PackageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -72,8 +78,13 @@ def add_package(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_package(request, package_id):
     """ Edit a package in the offer """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the owner can do that')
+        return redirect(reverse('agile_app'))
 
     package = get_object_or_404(Package, pk=package_id)
     if request.method == 'POST':
@@ -98,8 +109,15 @@ def edit_package(request, package_id):
     return render(request, template, context)
 
 
+@login_required
 def delete_package(request, package_id):
     """ Delete a package from the offer """
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only the owner can do that')
+        return redirect(reverse('agile_app'))
+
+    print(package_id)
     package = get_object_or_404(Package, pk=package_id)
     package.delete()
     messages.success(request, 'Package deleted!')

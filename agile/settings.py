@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'packages',
     'checkout',
     'profiles',
+    'contactform',
 
     # Other
     'crispy_forms',
@@ -236,3 +237,5 @@ else:
 
 
 COUNTRIES_ONLY = ['SE']
+
+CONTACTFORM_RECIPIENTS = ['anna.w.janiak@gmail.com']
