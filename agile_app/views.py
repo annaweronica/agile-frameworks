@@ -26,7 +26,7 @@ def get_contact_page(request):
             subject = "A Visitor's Comment"
 
         comment = name + " with the email, " + email + ", sent the following message:\n\n" + comment
-        send_mail(subject, comment, 'dlhylton@gmail.com', [email])
+        send_mail(subject, comment, 'anna.w.janiak@gmail.com', [email])
 
         context = {'form': form}
 
