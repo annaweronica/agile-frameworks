@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
+
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -17,6 +19,7 @@ from profiles.models import UserProfile
 import stripe
 
 
+@login_required
 def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -86,6 +89,7 @@ def checkout(request):
     # return redirect(reverse('checkout_success', args=[order_number]))
 
 
+@login_required
 def checkout_success(request, order_number):
 
     """ To display successful checkout """

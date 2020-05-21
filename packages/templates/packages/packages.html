@@ -18,11 +18,11 @@
         </div>-->
     <!-- /.col-lg-3 -->
    {% if packages %}
-            <div class="col-lg-12 package-offer">
+            <div class="col-lg-10 package-offer">
             {% for package in packages %}
                 <div class="card mt-4" id="{{package.name}}">
                     {% if package.image %}
-                        <img class="card-img-top img-fluid" src="{{ package.image.url }}" alt="Package Image">
+                        <img class="card-img-top " src="{{ package.image.url }}" alt="Package Image" width="900" height="500">
                     {% else %}
                         <img class="card-img-top img-fluid" src="{{MEDIA_URL}}noImage.png" alt="No Image">
                     {% endif %}
@@ -30,10 +30,28 @@
                     <div class="card-body">
                     <h3 class="card-title">{{package.name}}</h3>
                     <h4> SEK {{package.price}}</h4>
-                    <p class="card-text">123quam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                        4.0 stars
-                    </div>
+                    {% if package.rating <= 2.0 %}
+                        <span class="text-warning">&#9733;</span>
+                            {{package.rating}} stars
+                    {% endif %}
+                    {% if package.rating > 2.0 and package.rating <= 4.0 %}
+                        <span class="text-warning">&#9733; &#9733;</span>
+                            {{package.rating}} stars
+                    {% endif %}    
+                    {% if package.rating > 4.0 and package.rating <= 6.0 %}
+                        <span class="text-warning">&#9733; &#9733; &#9733;</span>
+                            {{package.rating}} stars
+                    {% endif %}
+                    {% if package.rating > 6.0 and package.rating <= 8.0 %}
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733;</span>
+                            {{package.rating}} stars
+                    {% endif %}
+                    {% if package.rating > 8.0 %}
+                        <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9733;</span>
+                            {{package.rating}} stars
+                    {% endif %}
+                </div>
+                    
                 </div>
             <!-- /.card -->
 
@@ -41,13 +59,6 @@
                 <div class="card-header">Description</div>
                 <div class="card-body">
                 <p>{{ package.description }}</p>
-                    
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    
-                <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                    
                 <hr>
                 <!-- if the user if logged in bla bla -->
                

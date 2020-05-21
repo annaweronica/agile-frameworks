@@ -50,25 +50,29 @@
                     <li class="nav-item active">
                         {% if request.user.is_authenticated %}
                             <li class="nav-item">
-                                <p class="nav-link" id="logged_in_user"> Hi, {{ request.user.username }}</p>
+                                <a class="nav-link" id="logged_in_user" href="{% url 'get_main_page' %}"> Hi, {{ request.user.username }}</a>
                             </li>
                             {% if request.user.is_superuser %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'add_package' %}">Package Management</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'add_package' %}">Package Management</a>
+                                </li>
                             {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'get_packages' %}">Offer</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'checkout' %}">Checkout</a>
                             </li>
-                        <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'profile' %}">My profile</a>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'get_contact_page' %}">Contact</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                            </li>
-                            
-                            {% else %}
+                            </li>    
+                        {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'get_packages' %}">Offer</a>
                             </li>
@@ -76,11 +80,11 @@
                                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">Contact</a>
-                                
+                                <a class="nav-link" href="{% url 'get_contact_page' %}">Contact</a>
                             </li>
-                            </li>
-                        {% endif %}                    
+                        {% endif %}
+                    </li>
+                                        
                 </ul>
             </div>
         </div>
