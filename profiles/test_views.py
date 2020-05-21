@@ -38,6 +38,7 @@ class TestClient(Client):
         # Save the session values.
         request.session.save()
 
+
 class TestProfileViews(TestCase):
 
     # test view for not loged in user

@@ -31,7 +31,7 @@
                     {% endfor %}
             <div class="text-right">
                 <a class="btn btn-outline-black rounded-8" href="{% url 'get_packages' %}">Cancel</a>
-                    <button class="btn btn btn-outline-dark rounded-8" type="submit">Add Product</button>
+                    <button class="btn btn btn-outline-dark rounded-8" data-toggle="popover" title="Popover title" data-content="Test message" type="submit">Add Package</button>
             </div>
         </form>
 
@@ -40,4 +40,7 @@
 </div>
 
 <!-- /.container -->
+{% endblock %}
+
+{% block postloadjs %}
 {% endblock %}

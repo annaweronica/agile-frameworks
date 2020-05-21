@@ -17,11 +17,9 @@ body{
 
 /* ------------------------------------  main_page carousel */
 
-
-/* ------------------------------------  main_page carousel */
 .carousel-item {
   height: 65vh;
-  min-height: 350px;
+  min-height: 300px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -29,23 +27,29 @@ body{
   background-size: cover;
 }
 
+
 /* ------------------------------------  main_page offer */
+
+.pricing{
+    color: white;
+}
 
 section.pricing {
   background: #343A40;
   background: linear-gradient(to right, #343A40, #343A40);
 }
 
-.pricing .card {
+/* .pricing .card {
   border: none;
   border-radius: 1rem;
   transition: all 0.2s;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-}
+} */
 
-.pricing hr {
+/*.pricing hr {
   margin: 1.5rem 0;
-}
+  color: red;
+}*/
 
 .pricing .card-title {
   margin: 0.5rem 0;
@@ -108,5 +112,9 @@ section.pricing {
 
 .package-offer-form{
     margin-bottom: 4rem;
+}
+
+.btn-add-package{
+    margin-top: 3rem;
 }
 

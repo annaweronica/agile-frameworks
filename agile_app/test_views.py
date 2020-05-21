@@ -8,7 +8,7 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'agile_app/main_page.html')
 
-    def test_get_contact(self):
-        response = self.client.get('/contact/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'agile_app/contact.html')
+    # def test_get_contact(self):
+    #     response = self.client.get('/contact/')
+    #     self.assertEqual(response.status_code, 200)
+    #     self.assertTemplateUsed(response, 'agile_app/contact.html')

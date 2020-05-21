@@ -70,6 +70,7 @@
 - [template for a checkout form](https://codepen.io/manassehl/pen/OYVeXB)
 - [template for a shopping cart/bag](https://bootstrapious.com/p/bootstrap-shopping-cart)
 - [template for a review](https://www.bootdey.com/snippets/view/bs4-Ratings-and-Reviews-page#html)
+- [templete for offer description](https://startbootstrap.com/previews/modern-business/)
 
 
 

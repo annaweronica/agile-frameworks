@@ -76,7 +76,8 @@
                                 <a class="nav-link" href="{% url 'account_login' %}">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'get_contact_page' %}">Contact</a>
+                                <a class="nav-link" href="">Contact</a>
+                                
                             </li>
                             </li>
                         {% endif %}                    
@@ -85,23 +86,23 @@
         </div>
     </nav>
 
-    {% if messages %}
-            <div class="message-container">
-                {% for message in messages %}
-                    {% with message.level as level %}
-                        {% if level == 40 %}
-                            {% include 'includes/modals/modal_error.html' %}
-                        {% elif level == 30 %}
-                            {% include 'includes/modals/modal_warning.html' %}
-                        {% elif level == 25 %}
-                            {% include 'includes/modals/modal_success.html' %}
-                        {% else %}
-                            {% include 'includes/modals/modal_info.html' %}
-                        {% endif %}
-                    {% endwith %}
-                {% endfor %}
-            </div>
-        {% endif %}
+    <!-- {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/modals/modal_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/modals/modal_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/modals/modal_success.html' %}
+                    {% else %}
+                        {% include 'includes/modals/modal_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %} -->
 
     {% endblock %}
 
@@ -118,6 +119,13 @@
     {% endblock %}
 
     {% block postloadjs %}
+    <script>
+    $(function () {
+        $('.example-popover').popover({
+            container: 'body'
+        })
+    })
+    </script>
     {% endblock %}
 
     {% block extra_body %}
