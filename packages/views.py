@@ -44,12 +44,6 @@ def update_cart(request, package_id):
     return redirect(reverse('checkout'))
 
 
-def get_package_management(request):
-    """ A view to display a package management to
-        meet CRUD requirement """
-    return render(request, 'packages/package_management.html')
-
-
 @login_required
 def add_package(request):
     """ Add a package to the offer """
