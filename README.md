@@ -3,15 +3,30 @@
 
 [ROADMAP](/roadmap.md)<br>
 [STATEMENT](/statement.md)<br>
-![WIREFRAME: manin pge](/static/wireframes/main-page.png)
 
 
 # FEATURES
 
-1. Registration and login 
-2. CRUD on different types of service offer
-3. Video with the offer presentation
-4. Testemonials' carousel
+## Features implemented
+
+1. User authentication
+2. Addin, editing and deleting a packacge. CRUD implemented on the level of superuser
+3. Contact form
+4. *See the offer* button to redirect the user to the *OFFER*
+5. Navbar navigations easily throught the site
+6. Navbar with different available options for different level user
+7. Ability to add, edit and delete a packacge on a superuser level
+8. Ability to give a package a rating on a superuser level
+8. Browse all available packages on the *Offer* site
+9. Buy a chosen package
+10. Add another package to the checkout *cart*
+11. Pay for the package
+12. 
+
+## Features to be implemented
+
+1. Reviews for users to wrote connected with existing rating
+
 
 # USER STORIES
 
@@ -21,7 +36,7 @@
 2. As a user I want to be able to easily navigate across the website
 3. As a user I want to be able to pay for selected service
 4. As a user I want to be able to contact the owner of the website
-5. As a user I want to be able to see other customers Testemonials
+5.
 
 ## Registration
 
@@ -43,6 +58,9 @@
 4. As a user I want to see the order confirmation after Checkout
 5. As a user I want to see email confirmation after checking out
 
+# UX
+
+- [wireframes](/wireframes.md)
 
 # TECHNOLOGIES
 
@@ -60,6 +78,7 @@
     - PosteSQL for database
     - AWS for storing media files
 
+# TESTING
 
 [TESTTING](/testing.md)<br>
 
@@ -123,16 +142,20 @@ To deploy The House of Mouse webshop to heroku, take the following steps:
 - Confirm the linking of the heroku app to the correct GitHub repository
 - In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars"
 - Set the following config vars:
-| KEY                     | Value                        | 
-| ----------------------- |:--------------------------:  | 
-| AWS_ACCESS_KEY_ID       | <your secret key>            | 
-| AWS_SECRET_ACCESS_KEY   | <your secret key>            |
-| AWS_STORAGE_BUCKET_NAME | <your AWS S3 bucket name>    |
-| DATABASE_URL            | <your postgres database url> |
-| EMAIL_HOST_PASS         | <your secret key>            |
-| EMAIL_HOST_USER         | ?emial adres?                |
-| STRIPE_PUBLIC_KEY       | <your secret key>            |
-| STRIPE_SECRET_KEY       |<your secret key>             |
+
+
+ KEY                     | Value                           | 
+| ----------------------- |:--------------------------:    | 
+| AWS_ACCESS_KEY_ID       | `<your secret key>`            | 
+| AWS_SECRET_ACCESS_KEY   | `<your secret key>`            |
+| AWS_STORAGE_BUCKET_NAME | `<your AWS S3 bucket name>`    |
+| DATABASE_URL            | `<your postgres database url>` |
+| EMAIL_HOST_PASS         | `<your secret key>`            |
+| EMAIL_HOST_USER         | `?emial adres?`                |
+| STRIPE_PUBLIC_KEY       | `<your secret key>`            |
+| STRIPE_SECRET_KEY       |`<your secret key>`             |
+
+
 - From the command line of your local IDE:
         - Enter the heroku postres shell
         - Migrate the database models
@@ -144,7 +167,11 @@ To deploy The House of Mouse webshop to heroku, take the following steps:
 - Once the instance exists in your database your heroku site will run as expected
 
 # CREDITS
+
 - [Chris Zielinski and CI vidoes on Django module](https://courses.codeinstitute.net/courses/course-v1:CodeInstitute+FSF_102+Q1_2020/info)
 - [Anna Greaves for ReadMe inspiration](https://github.com/AJGreaves/thehouseofmouse)
 - [Tim Nelson for ReadMe inspiration](https://github.com/TravelTimN/ci-milestone05-fsfw)
+
+<br>
+All pictures on this site comes from [Stock Adobre](https://stock.adobe.com/se/)
 
