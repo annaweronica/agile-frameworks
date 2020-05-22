@@ -90,9 +90,6 @@ All user stories been tested. There are couple of issues to fix in the future.
 
 Please note adding a packing does work but attaching the image does not!
 
-
-
-
 # AUTOMATED TESTING
 
 Covarage report: between 50-80%.
