@@ -1,20 +1,17 @@
-/*div{
-    border: black solid 1px;
-} */
 
 html{
     height: 100%;
 }
 
+/* ------------------------------------  main_page carousel */
+
 body{
-    /*background: url('/media/background.png') no-repeat center center fixed;*/
     background-size: cover;
     height: calc(100vh - 164px);
     color: #343A40;
     font-family: 'Catamaran';
     margin-top: 3.5rem;
     border-radius: 20px;
-    /*background: linear-gradient(to right, #343A40, #343A40);*/
 }
 
 /* ------------------------------------  main_page carousel */
@@ -29,7 +26,6 @@ body{
   background-size: cover;
 }
 
-
 /* ------------------------------------  main_page offer */
 
 .pricing{
@@ -40,18 +36,6 @@ section.pricing {
  
   background: linear-gradient(to right, #343A40, #343A40);
 }
-
-/* .pricing .card {
-  border: none;
-  border-radius: 1rem;
-  transition: all 0.2s;
-  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
-} */
-
-/*.pricing hr {
-  margin: 1.5rem 0;
-  color: red;
-}*/
 
 .pricing .card-title {
   margin: 0.5rem 0;
@@ -119,6 +103,8 @@ section.pricing {
 .btn-add-package{
     margin-top: 3rem;
 }
+
+/*--------------------------------------------------------login  */
 
 .login-style input{
     display: block;
