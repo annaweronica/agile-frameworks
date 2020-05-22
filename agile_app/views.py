@@ -19,20 +19,21 @@ def get_contact_page(request):
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ContactForm(request.POST)
+        print(form)
         # check whether it's valid:
         if form.is_valid():
             name = form.cleaned_data.get("name")
             email = form.cleaned_data.get("email")
             comment = form.cleaned_data.get("comment")
 
-            if request.user.is_authenticated():
+            if request.user.is_authenticated:
                 subject = str(request.user) + "'s Comment"
             else:
                 form = ContactForm()
                 subject = "A Visitor's Comment"
 
             comment = name + " with the email, " + email + ", sent the following message:\n\n" + comment
-            send_mail(subject, comment, 'anna.w.janiak@gmail.com', [email])
+            send_mail(subject, comment, email, ['anna.w.janiak@gmail.com'])
 
         context = {'form': form}
         print(comment)
