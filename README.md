@@ -76,7 +76,75 @@
 - [template for a review](https://www.bootdey.com/snippets/view/bs4-Ratings-and-Reviews-page#html)
 - [templete for offer description](https://startbootstrap.com/previews/modern-business/)
 
+<br>
+- [Inspiration for the project](https://uxdesignmasterclass.com/)
 
+# DEPLOYMENT
+
+## Requirements
+
+It's highly recommended to work in a virtual environment, but not absolutely required.
+
+In order to run this project locally on your own system, you will need the following installed (as a bare minimum):
+- Python3 to run the application
+- PIP to install all app requirements
+- GIT for cloning and version control
+- Gitpod or any suitable IDE to develop your project
+
+## Local deployment
+
+- Clone this GitHub repository by either clicking the green "Clone or download" button above in order to download the project as a zip-file (remember to unzip it first), or by entering the following command into the Git CLI terminal:
+git clone https://github.com/annaweronica/agile-frameworks.git
+- Navigate to the correct file location after unpacking the files.
+cd <path to folder>
+- Create a .env file with your own credentials. An example .env file can be found here (.env_sample).
+Note: the example .env file contains environmental variables for both local and remote deployment. (see below for remote deployment details)
+- Install all requirements from the requirements.txt file using this command:
+sudo -H pip3 -r requirements.txt
+- In the IDE terminal, use the following command to launch the Django project:
+python manage.py runserver
+- The Django server should be running locally now on http://127.0.0.1:8000 or similar. If it doesn't automatically open, you can copy/paste it into your browser of choice.
+- The Django server should be running locally now on http://127.0.0.1:8000 (or similar). If it doesn't automatically open, you can copy/paste it into your browser of choice.
+- Next, you'll need to make migrations to create the database schema:
+        - python manage.py makemigrations
+        - python manage.py migrate
+- In order to access the Django Admin Panel, you must generate a superuser:
+        - python manage.py createsuperuser (assign an admin username, email, and secure password)
+
+## Remote deployment
+
+To deploy The House of Mouse webshop to heroku, take the following steps:
+
+- Create a requirements.txt file using the terminal command pip freeze > requirements.txt
+- Create a Procfile with the terminal command echo web: python app.py > Procfile
+- git add and git commit the new requirements and Procfile and then git push the project to GitHub
+- Create a new app on the Heroku website by clicking the "New" button in your dashboard. Give it a name and set the region to whichever is applicable for your location
+- From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub
+- Confirm the linking of the heroku app to the correct GitHub repository
+- In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars"
+- Set the following config vars:
+| KEY                     | Value                        | 
+| ----------------------- |:--------------------------:  | 
+| AWS_ACCESS_KEY_ID       | <your secret key>            | 
+| AWS_SECRET_ACCESS_KEY   | <your secret key>            |
+| AWS_STORAGE_BUCKET_NAME | <your AWS S3 bucket name>    |
+| DATABASE_URL            | <your postgres database url> |
+| EMAIL_HOST_PASS         | <your secret key>            |
+| EMAIL_HOST_USER         | ?emial adres?                |
+| STRIPE_PUBLIC_KEY       | <your secret key>            |
+| STRIPE_SECRET_KEY       |<your secret key>             |
+- From the command line of your local IDE:
+        - Enter the heroku postres shell
+        - Migrate the database models
+        - Create your superuser account in your new database
+        - Instructions on how to do these steps can be found in the [heroku devcenter documentation](https://devcenter.heroku.com/articles/heroku-postgresql)
+- In your heroku dashboard, click "Deploy". Scroll down to "Manual Deploy", select the master branch then click "Deploy Branch"
+- Once the build is complete, click the "Open app" button provided
+- From the link provided add /admin to the end of the url, log in with your superuser account and create instances of Packages in the new database
+- Once the instance exists in your database your heroku site will run as expected
 
 # CREDITS
-- [Inspiration for the project](https://uxdesignmasterclass.com/)
+- [Chris Zielinski and CI vidoes on Django module](https://courses.codeinstitute.net/courses/course-v1:CodeInstitute+FSF_102+Q1_2020/info)
+- [Anna Greaves for ReadMe inspiration](https://github.com/AJGreaves/thehouseofmouse)
+- [Tim Nelson for ReadMe inspiration](https://github.com/TravelTimN/ci-milestone05-fsfw)
+
