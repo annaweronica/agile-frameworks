@@ -17,9 +17,7 @@
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
             </h4>
-
             {% if total is not 3 %}
-            <!--for for packages-->
             {% for package in packages %}
             <ul class="list-group mb-3">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -53,28 +51,28 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-6 mb-3">
-                        <!--<label for="fullName">Full name</label>-->
+                        
                         <input type="text" class="form-control" id="fullName" placeholder="Full name" value="{{ packages.full_name}}" name="full_name" required />
                         <div class="invalid-feedback"></div>
                     </div>
                 </div>
-                <!--the user can use different email then he is logged in with-->
+                
                 <div class="mb-3">
-                   <!-- <label for="email">Email</label>-->
+                   
                     <input type="email" class="form-control" id="email" placeholder="e-mail@address.com" value="{{profile.email}}" name="email" required />
                     <div class="invalid-feedback">
                         Please enter a valid email address for shipping updates.
                     </div>
                 </div>
                 <div class="mb-3">
-                    <!--<label for="address">Address</label>-->
+                    
                     <input type="text" class="form-control" id="address" placeholder="Address 1" value="{{profile.address}}" name="address" required />
                     <div class="invalid-feedback">
                         Please enter the address.
                     </div>
                 </div>
                 <div class="mb-3">
-                    <!--<label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>-->
+                    
                     <input type="text" class="form-control" id="address2" placeholder="Address 2 (optional)" value="{{profile.address2}}" name="address2" />
                 </div>
                 <div class="row">
@@ -83,48 +81,23 @@
                         <div class="font-weight-bold ">
                             SWEDEN
                         </div>
-
-                       <!--<select class="custom-select d-block w-100" id="country" name="country" required>
-                            <option value="">Choose...</option>
-                            <option>Sweden</option>
-                            <option>Poland</option>
-                        </select>
-                        <div class="invalid-feedback">
-                            Please select a valid country.
-                        </div>-->
                     </div>
                     <div class="col-md-3 mb-3">
-                        <!--<label for="city">City</label>-->
                         <input type="text" class="form-control" id="city" placeholder="City" name="city" required value="{{profile.town_or_city}}" />
                         <div class="invalid-feedback">
                             City is required.
                         </div>
                     </div>
                 </div>
-                <!-- <div class="form-check form-check-inline float-left mr-0">
-                    {% if user.is_authenticated %}
-                    <label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
-                    <input class="form-check-input ml-2 mr-0" type="checkbox" id="id-save-info" name="save-info" checked />
-                    {% else %}
-                    <label class="form-check-label" for="id-save-info">
-                        <a class="text-info" href="{% url 'account_signup' %}">Create an account</a> or <a class="text-info" href="{% url 'account_login' %}">login</a> to save this information
-                    </label>
-                    {% endif %}
-                </div> -->
                 <hr class="mb-4" />
 
                 <!--PAYMENT SECTION -->
-                
                 <fieldset class="px-3">
                     <legend class="fieldset-label small text-black px-2 w-auto">Payment</legend>
-                    <!-- A Stripe card element will go here -->
                     <div class="mb-3" id="card-element"></div>
-                    <!-- Used to display form errors -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
-                    <!-- Pass the client secret to the view so we can get the payment intent id -->
                     <input type="hidden" value="{{ client_secret }}" name="client_secret" />
                 </fieldset>
-
                 <div class="row">
                     <p class="small text-danger my-0">
                         <span class="icon">
@@ -134,7 +107,6 @@
                     </p>
                 </div>
                 <hr class="mb-4" />
-
                 <button id="submit-button" class="btn btn-outline-primary btn-lg btn-block" type="submit">
                     <span class="font-weight-bold">PAY</span>
                 </button>
@@ -144,8 +116,6 @@
 </div>
 
 {% endblock %}
-
-
 
 {% block postloadjs %}
     {{ block.super }}

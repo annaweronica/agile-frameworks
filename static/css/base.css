@@ -37,57 +37,10 @@ section.pricing {
   background: linear-gradient(to right, #343A40, #343A40);
 }
 
-.pricing .card-title {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-}
-
-.pricing .card-price {
-  font-size: 3rem;
-  margin: 0;
-}
-
-.pricing .card-price .period {
-  font-size: 0.8rem;
-}
-
-.pricing ul li {
-  margin-bottom: 1rem;
-}
-
-.pricing .text-muted {
-  opacity: 0.7;
-}
-
-.pricing .btn {
-  font-size: 80%;
-  border-radius: 5rem;
-  letter-spacing: .1rem;
-  font-weight: bold;
-  padding: 1rem;
-  opacity: 0.7;
-  transition: all 0.2s;
-}
-
-/* Hover Effects on Card */
-
-@media (min-width: 992px) {
-  .pricing .card:hover {
-    margin-top: -.25rem;
-    margin-bottom: .25rem;
-    box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.3);
-  }
-  .pricing .card:hover .btn {
-    opacity: 1;
-  }
-}
-
 /* ------------------------------------  offer page */
 
 .package-offer{
-    margin-top: 4rem!important;
+    margin-top: 1.5rem!important;
 }
 
 .packages-list{
@@ -104,20 +57,33 @@ section.pricing {
     margin-top: 3rem;
 }
 
-/*--------------------------------------------------------login  */
+/*--------------------------------------------------------login allauth  */
 
-.login-style input{
-    display: block;
-    width: 100%;
-    height: calc(2.25rem + 2px);
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: none !important;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.allauth-form-inner-content input {
+    border-radius: 8;
 }
 
+.allauth-form-inner-content label:not([for='id_remember']) {
+    display: none;
+}
+
+.allauth-form-inner-content input:not[type='checkbox'] {
+  display: block;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/*--------------------------------------------------------media query  */
+
+@media screen and (min-width: 480px) {
+  body {
+    margin: lightgreen;
+  }
+}
