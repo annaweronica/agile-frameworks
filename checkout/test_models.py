@@ -9,7 +9,6 @@ class TestModels(TestCase):
     def setUpTestData(cls):
         order = Order(
             order_number = '123654',
-            # user_profile = 'Test_User',
             name = 'test_name',
             full_name = 'John Smith',
             email = 'test@test.com',
@@ -24,7 +23,6 @@ class TestModels(TestCase):
         order = Order.objects.get(id=1)
 
         self.assertEqual(order.order_number, '123654')
-        # self.assertEqual(order.user_profile, 'Test_User')
         self.assertEqual(order.name, 'test_name')
         self.assertEqual(order.full_name, 'John Smith')
         self.assertEqual(order.email, 'test@test.com')

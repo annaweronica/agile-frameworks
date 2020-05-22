@@ -27,5 +27,5 @@ class TestModels(TestCase):
         user = UserProfile.objects.create(name='Test User')
         self.assertEqual(str(user), 'Test User')
 
-# the test are not run. Error: not null constraint failed: 
+# the test are not run. Error: not null constraint failed:
 # profiels_userprofile.user_id

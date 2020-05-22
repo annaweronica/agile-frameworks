@@ -86,7 +86,7 @@ def edit_package(request, package_id):
         if form.is_valid():
             package = form.save()
             # messages.success(request, 'The package successfully updated!')
-            return redirect(reverse('get_packages')) 
+            return redirect(reverse('get_packages'))
         else:
             messages.error(request,
                            'Failed to update a package. Please ensure the form is valid.')

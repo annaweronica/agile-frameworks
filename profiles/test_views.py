@@ -15,7 +15,8 @@ class TestProfileViews(TestCase):
         user = User.objects.create(username='testuser')
         user.set_password('SecretUser123')
         user.save()
-        logged_in = self.client.login(username='testuser', password='SecretUser123')
+        logged_in = self.client.login(username='testuser',
+                                      password='SecretUser123')
         response = self.client.get('/profile/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('profiles/profile.html')

@@ -8,7 +8,7 @@
             {% for package in packages %}
             <div class="card mt-4" id="{{package.name}}">
                 {% if package.image %}
-                <img class="card-img-top" src="{{ package.image.url }}" alt="Package Image" width="900" height="600" />
+                <img class="card-img-top" src="{{ package.image.url }}" alt="Package Image" />
                 {% else %}
                 <img class="card-img-top img-fluid" src="{{MEDIA_URL}}noImage.png" alt="No Image" />
                 {% endif %}

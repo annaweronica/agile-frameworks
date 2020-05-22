@@ -103,7 +103,6 @@ def checkout_success(request, order_number):
         order.user_profile = profile
         order.save()
 
-
     # Save the user's info
     if save_info:
         profile_data = {
@@ -123,7 +122,7 @@ def checkout_success(request, order_number):
         email will be sent to {order.email}.')
 
     # if 'bag' in request.session:
-        # del request.session['bag']
+    # del request.session['bag']
 
     """Send the user a confirmation email"""
     cust_email = order.email
