@@ -24,7 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(z-2ec-m&*2=7c%0_d0z@j_zck@^#j37e38qj4nrl6-$h7@a#l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'DEVELOPMENT' in os.environ:
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ['agile-frameworks.herokuapp.com', 'localhost']
 
@@ -159,12 +162,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# if 'USE_AWS' in os.environ:
-# Cache control
-#    AWS_S3_OBJECT_PARAMETERS = {
-#        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
-#        'CacheControl': 'max-age=94608000',
-#    }
 
 #LOCAL
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -184,23 +181,6 @@ STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 
 
-# CREDENTIAL
-# Who I am
-# AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-# Password
-# AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-
-# REMOTE STORAGE ADDRESS (Building the URL)
-# AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
-# AWS_S3_HOST = 's3-eu-west-3.amazonaws.com'
-# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-# INTERNAL DJANGO SETTING --> Where should it stores files
-# MEDIAFILES_LOCATION = 'media'
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
 if 'DEVELOPMENT' in os.environ:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     DEFAULT_FROM_EMAIL = 'agile@example.com'
@@ -217,3 +197,24 @@ else:
 COUNTRIES_ONLY = ['SE']
 
 CONTACTFORM_RECIPIENTS = ['anna.w.janiak@gmail.com']
+
+if 'USE_AWS' in os.environ:
+    # Cache control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+    # CREDENTIAL
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+    # Password
+    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+
+    # REMOTE STORAGE ADDRESS (Building the URL)
+    AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_S3_HOST = 's3-eu-west-3.amazonaws.com'
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    # INTERNAL DJANGO SETTING --> Where should it stores files
+    MEDIAFILES_LOCATION = 'media'
+    MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

@@ -21,12 +21,11 @@
 9. Buy a chosen package
 10. Add another package to the checkout *cart*
 11. Pay for the package
-12. 
 
 ## Features to be implemented
 
 1. Reviews for users to wrote connected with existing rating
-
+2. Testemonials
 
 # USER STORIES
 
@@ -34,13 +33,12 @@
 
 1. As a user I want to get to know what is the website about to define is the content relevant for me
 2. As a user I want to be able to easily navigate across the website
-3. As a user I want to be able to pay for selected service
-4. As a user I want to be able to contact the owner of the website
-5.
+3. As a user I want to be able to contact the owner of the website
+4. As a user I want to be able to click on the button to get to know the offer
 
 ## Registration
 
-1. As a new user I want to register to discover more content
+1. As a new user I want to register to discover more content so I can purchase package
 2. As a user I want to get confirmation about being registrated
 
 ## Login 
@@ -48,19 +46,34 @@
 1. As a user I want to be able to login to see more content
 2. As a user I want to be able to pay for the selected service
 2. As a user I want to be able to use contact form to discuss date/details
-3. As a user I want to be able to leave Testemonials
 
 ## Checkout
 
-1. As a user I want to be able to select the package.
-2. As a user I want to be able to view the selected package in the purchase summary.
-3. As a user I want to enter my payment infomation
-4. As a user I want to see the order confirmation after Checkout
-5. As a user I want to see email confirmation after checking out
+1. As a user I want to be able to select the package 
+2. As a user I want to be able to pay for selected package
+3. As a user I want to add another package to the shopping cart
+4. As a user I want to be able to view the selected package in the shopping cart
+5. As a user I want to enter my payment infomation
+6. As a user I want to enter my card number to be able to pay for the package
+7. As a user I want to be redirected to the order confirmation 
+8. As a user I want to be able to be allowed to buy another package
+
+## Profile
+
+1. As a user I want to be able to update address details
+2. As a user I want to see the the order history
+
+## Package management
+
+1. As a superuser I want to be able to add a packacge to the offer
+2. As a superuser I want to be able to edit the packacge which is alreday in the offer
+3. As a superuser I want to be able to delete the package 
+
 
 # UX
 
-- [wireframes](/wireframes.md)
+- [WIREFRAMES](/wireframes.md)
+
 
 # TECHNOLOGIES
 
@@ -80,7 +93,7 @@
 
 # TESTING
 
-[TESTTING](/testing.md)<br>
+[TESTING](/testing.md)<br>
 
 
 # EXTERNAL RESOURCES USED IN THE PEOJECT

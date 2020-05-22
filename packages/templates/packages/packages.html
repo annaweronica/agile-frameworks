@@ -30,7 +30,7 @@
                 <div class="card-body">
                     <p>{{ package.description }}</p>
                     <hr />
-                    <a href="{% url 'update_cart' package.id %}" class="btn btn-outline-dark">Book and buy</a>
+                    <a href="{% url 'update_cart' package.id %}" class="btn btn-outline-dark">PAY</a>
                     {% if request.user.is_superuser %}
                     <small class="ml-3"> <a href="{% url 'edit_package' package.id %}">Edit</a> | </small>
                     <button type="button" id="delete-button" class="btn btn-outline-primary" data-toggle="modal" data-target="#deleteModal-{{ package.id }}" data-package="{{ package.id }}">
