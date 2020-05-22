@@ -1,1 +1,1 @@
-Boutique Ado Confirmation for Order Number {{ order.order_number }}
+What is SCRUM about? Confirmation for Order Number {{ order.order_number }}

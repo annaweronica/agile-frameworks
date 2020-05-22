@@ -3,13 +3,13 @@ from .forms import ContactForm
 from django.core.mail import send_mail
 
 
-# Create your views here.
 def get_main_page(request):
     """ A view to return the main page """
     return render(request, 'agile_app/main_page.html')
 
 
 def get_contact_page(request):
+    """ A view to return contact page """
     name = ''
     email = ''
     comment = ''
@@ -29,13 +29,9 @@ def get_contact_page(request):
         send_mail(subject, comment, 'anna.w.janiak@gmail.com', [email])
 
         context = {'form': form}
-
+        print(comment)
         return render(request, 'agile_app/contact.html', context)
 
     else:
         context = {'form': form}
         return render(request, 'agile_app/contact.html', context)
-
-# def get_contact_page(request):
-#     """ A view to return the main page """
-#     return render(request, 'agile_app/contact.html')

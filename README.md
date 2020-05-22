@@ -56,8 +56,12 @@
 
     - Python
     - Django
-    - Stripe
-    - PosteSQL (heroku)
+    - Stripe for payments
+    - PosteSQL for database
+    - AWS for storing media files
+
+
+[TESTTING](/testing.md)<br>
 
 
 # EXTERNAL RESOURCES USED IN THE PEOJECT
