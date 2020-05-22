@@ -86,8 +86,16 @@ All user stories been tested. There are couple of issues to fix in the future.
 2. As a superuser I want to be able to edit the packacge which is alreday in the offer
 3. As a superuser I want to be able to delete the package 
 
+### MANUAL TESTING ON AWS
+
+Please note adding a packing does work but attaching the image does not!
+
+
+
+
 # AUTOMATED TESTING
 
 Covarage report: between 50-80%.
 Some tests are failing.
 In one case while testing models in profile app. I wrote tests but they are not actually run.
+
