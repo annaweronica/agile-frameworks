@@ -211,8 +211,14 @@ if 'USE_AWS' in os.environ:
 
     # REMOTE STORAGE ADDRESS (Building the URL)
     AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+    AWS_s3_REGION_NAME = 'eu-north-1'
     AWS_S3_HOST = 's3-eu-west-3.amazonaws.com'
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    # STATIC AND MEDIA FILES
+    STATICFILES_LOCATION = 'static'
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
     # INTERNAL DJANGO SETTING --> Where should it stores files
     MEDIAFILES_LOCATION = 'media'
