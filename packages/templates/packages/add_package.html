@@ -7,17 +7,12 @@
 {% endblock %}
 
 {% block offer %}
-<!-- Page Content -->
 
 <div class="container">
      <div class="row">
-           <!-- <div class=" col-lg-3 packages-list list-group">
-                <a href="" class="list-group-item active">The package on the side list</a>
-            </div>-->
     <div class="col-lg-9 package-offer package-offer-form">
         <form method="POST" action="{% url 'add_package' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                     <!--form.as_p or as_table-->
                     {% for field in form %}
                         <div class="fieldWrapper">
                             {{ field.errors }}
@@ -39,7 +34,6 @@
     </div>
 </div>
 
-<!-- /.container -->
 {% endblock %}
 
 {% block postloadjs %}
