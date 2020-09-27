@@ -31,8 +31,6 @@ def checkout(request):
             'street_address1': request.POST['address'],
             'street_address2': request.POST['address2'],
             'town_or_city': request.POST['city'],
-            # 'country': request.POST['country'],
-
         }
 
         order_form = OrderForm(form_data)
@@ -55,8 +53,6 @@ def checkout(request):
                 Please double check your information.')
 
     order_form = OrderForm()
-
-    # package = Package.objects.get(id  = package_id)
 
     to_return = []
     total = 3
@@ -86,7 +82,6 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
-    # return redirect(reverse('checkout_success', args=[order_number]))
 
 
 @login_required
@@ -110,7 +105,6 @@ def checkout_success(request, order_number):
             'default_town_or_city': order.town_or_city,
             'default_street_address1': order.street_address1,
             'default_street_address2': order.street_address2,
-            # 'default_country': order.country,
         }
         user_profile_form = UserProfileForm(profile_data,
                                             instance=profile)
@@ -120,9 +114,6 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed! \
         Your order number is {order_number}. A confirmation \
         email will be sent to {order.email}.')
-
-    # if 'bag' in request.session:
-    # del request.session['bag']
 
     """Send the user a confirmation email"""
     cust_email = order.email

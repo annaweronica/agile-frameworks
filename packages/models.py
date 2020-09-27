@@ -8,7 +8,6 @@ class Package(models.Model):
                                 null=False, default=0)
     rating = models.DecimalField(max_digits=2, decimal_places=1,
                                  null=True, blank=True)
- #   image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
     def __str__(self):

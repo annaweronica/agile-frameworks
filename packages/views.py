@@ -24,7 +24,6 @@ def update_cart(request, package_id):
     """ A view to see updated cart """
 
     cart = request.session.get('cart', {})
-    # package = Package.objects.get(id  = package_id)
     cart[package_id] = True
     to_return = []
     total = 0
@@ -56,7 +55,6 @@ def add_package(request):
         form = PackageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            # messages.success(request, 'Successfully added package')
             return redirect(reverse('get_packages'))
         else:
             messages.error(request,
@@ -85,7 +83,6 @@ def edit_package(request, package_id):
         form = PackageForm(request.POST, request.FILES, instance=package)
         if form.is_valid():
             package = form.save()
-            # messages.success(request, 'The package successfully updated!')
             return redirect(reverse('get_packages'))
         else:
             messages.error(request,
@@ -114,5 +111,4 @@ def delete_package(request, package_id):
     print(package_id)
     package = get_object_or_404(Package, pk=package_id)
     package.delete()
-    # messages.success(request, 'Package deleted!')
     return redirect(reverse('get_packages'))

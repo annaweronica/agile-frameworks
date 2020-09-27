@@ -24,7 +24,7 @@ def profile(request):
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
 
-    # adding reviews later
+    # to be added user reviews in the future extenstion of the project
 
     template = 'profiles/profile.html'
     context = {
