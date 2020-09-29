@@ -76,5 +76,3 @@ form.addEventListener('submit', function(ev) {
     }
     });
 });
-
-//var stripe = Stripe('pk_test_OzflgG0UPSMxMSxV0zqtJwJq00A9VPyuuV');
