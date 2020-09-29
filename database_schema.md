@@ -1,6 +1,6 @@
 # DATABASE SCHEMA 
 
-## Packages
+## Packages App Model
 
 #### Package
 
@@ -12,9 +12,9 @@
 'image': '...',
 ```
 
-## Profiles
+## Profiles App Model
 
-#### User profile
+#### UserProfile
 
 ```
 'user': '...',
@@ -23,7 +23,7 @@
 'default_street_address2': '...',
 'default_country': '...',
 ```
-## Checkout App models
+## Checkout App Models
 
 #### Order
 
@@ -41,7 +41,7 @@
 'total': '...',
 ```
 
-#### Order Line item
+#### OrderLineItem
 
 ```
 'order': '...',

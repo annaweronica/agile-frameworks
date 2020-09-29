@@ -4,6 +4,7 @@
 [ROADMAP](/roadmap.md)<br>
 [STATEMENT](/statement.md)<br>
 
+[README SUPPLEMENT](/README_supplement.md)
 
 # FEATURES
 
@@ -77,6 +78,10 @@
 # DATABASE SCHEMA 
 
 - [Databse schema](/database_schema.md)
+
+# Structure of apps in the project
+
+- [Apps structure](/apps_structure.md)
 
 # TECHNOLOGIES
 
@@ -160,7 +165,7 @@ To deploy The House of Mouse webshop to heroku, take the following steps:
 - Set the following config vars:
 
 
- KEY                     | Value                           | 
+ KEY                      | Value                          | 
 | ----------------------- |:--------------------------:    | 
 | AWS_ACCESS_KEY_ID       | `<your secret key>`            | 
 | AWS_SECRET_ACCESS_KEY   | `<your secret key>`            |
