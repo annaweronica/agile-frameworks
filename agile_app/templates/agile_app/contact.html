@@ -14,7 +14,7 @@
 			<div class="card">
 				<div class="container-contact">
 					<div class="card-body">
-						<form action="{% url 'get_contact_page' %}" method="post">
+						<form id="contactForm" action="{% url 'get_contact_page' %}" method="post">
 							{% csrf_token %}
 							<div class="form-group">
 								<label for="name">Name</label>
@@ -30,7 +30,7 @@
 									<textarea class="form-control" name="comment" id="message" rows="6" required></textarea>
 								</div>
 								<div class="mx-auto">
-									<button type="submit" class="btn btn-outline-secondary text-right" data-toggle="popover" title="Your message has been sent." data-content="We will be back to you!">Submit</button>
+									<button type="submit" class="btn btn-outline-secondary text-right" title="Click to send your message.">Submit</button>
 								</div>
 						</form>
 					</div>
@@ -43,10 +43,10 @@
 
 {% block postloadjs %}
 <script>
-	$(function () {
-        $('[data-toggle="popover"]').popover({
-            container: 'body'
-        });
-    });
+document.getElementById("contactForm").onsubmit = function() {submitFunction()};
+
+function submitFunction() {
+    alert('Your message has been sent to us.');
+}
 </script>
 {% endblock %}

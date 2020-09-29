@@ -17,7 +17,6 @@ def get_contact_page(request):
 
     if request.method == 'POST':
         form = ContactForm(request.POST)
-        print(form)
 
         if form.is_valid():
             name = form.cleaned_data.get("name")
@@ -35,7 +34,6 @@ def get_contact_page(request):
             send_mail(subject, comment, email, ['anna.w.janiak@gmail.com'])
 
         context = {'form': form}
-        print(comment)
         return render(request, 'agile_app/contact.html', context)
 
     else:

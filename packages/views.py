@@ -108,7 +108,6 @@ def delete_package(request, package_id):
         messages.error(request, 'Sorry, only the owner can do that')
         return redirect(reverse('agile_app'))
 
-    print(package_id)
     package = get_object_or_404(Package, pk=package_id)
     package.delete()
     return redirect(reverse('get_packages'))
