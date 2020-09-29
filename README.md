@@ -74,6 +74,9 @@
 
 - [WIREFRAMES](/wireframes.md)
 
+# DATABASE SCHEMA 
+
+- [Databse schema](/database_schema.md)
 
 # TECHNOLOGIES
 
