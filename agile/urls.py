@@ -25,5 +25,4 @@ urlpatterns = [
     path('packages/', include('packages.urls')),
     path('checkout/', include('checkout.urls')),
     path('profile/', include('profiles.urls')),
-#    path('contact/', include('agile_app.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
